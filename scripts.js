@@ -103,4 +103,43 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.remove('hovered');
         });
     });
+
+    // Content Form Submission
+    document.getElementById('contentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+
+        const data = {
+            title: title,
+            content: content
+        };
+
+        // Save content to a JSON file (this requires a server-side script)
+        fetch('/save-content', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Content saved successfully!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    // Fetch content from JSON file and display it
+    fetch('content.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('title').textContent = data.title;
+            document.getElementById('content').innerHTML = data.content;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 });
