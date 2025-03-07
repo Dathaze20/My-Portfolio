@@ -3,21 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abel Arroyo - Full Stack Web Developer specializing in modern web applications with React, Node.js, and more">
+    <meta name="keywords" content="web developer, full stack, React, Node.js, JavaScript, portfolio">
+    <meta property="og:title" content="Abel Arroyo | Full Stack Web Developer">
+    <meta property="og:description" content="Full Stack Web Developer specializing in modern web applications">
+    <meta property="og:image" content="https://via.placeholder.com/150">
+    <meta property="og:url" content="https://yourwebsite.com">
     <title>Abel Arroyo | Full Stack Web Developer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Add Font Awesome for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>''
-    <div class="dark-mode-toggle">Toggle Dark Mode</div>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="loader-text">Loading<span class="loader-dots">...</span></div>
+    </div>
+    
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="dark-mode-toggle" aria-label="Toggle dark mode" role="switch" aria-checked="true" tabindex="0">
+        <i class="fas fa-moon"></i>
+    </div>
     <header>
         <div class="container">
-            <nav class="navbar">
+            <nav class="navbar" aria-label="Main navigation">
                 <a href="#" class="logo">
                     <span>AA</span> Abel Arroyo
                 </a>
-                <button type="button" class="nav-toggler">
+                <button type="button" class="nav-toggler" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
                 </button>
                 <div class="nav-links">
+                    <ul role="menubar">
+                        <li role="none"><a href="#home" role="menuitem">Home</a></li>
+                        <li role="none"><a href="#about" role="menuitem">About</a></li>
+                        <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
+                        <li role="none"><a href="#blog" role="menuitem">Blog</a></li>
+                        <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="hero">
+            <video autoplay muted loop class="background-video" preload="metadata">
+                <source src="https://via.placeholder.com/150" type="video/mp4">
+            </video>
+            <div class="particles">
+                <div class="particle" style="top: 10%; left: 20%;"></div>
+                <div class="particle" style="top: 30%; left: 40%;"></div>
+                <div class="particle" style="top: 50%; left: 60%;"></div>
+                <div class="particle" style="top: 70%; left: 80%;"></div>
+            </div>
+            <div class="container">
+                <h1>Abel Arroyo</h1>
+                <p>Full Stack Web Developer | UI/UX Enthusiast</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+            <div class="three-d-element">
+                <!-- Add your 3D element here using Three.js or any other library -->
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="introduction">
+            <div class="container">
+                <div class="intro-content">
+                    <img src="https://via.placeholder.com/150" alt="Abel Arroyo - Professional headshot" class="intro-photo" width="150" height="150" loading="lazy">
+                    <div class="intro-text">
+                        <h2>Hi, I'm Abel Arroyo</h2>
+                        <p>I'm a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="glassmorphism">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Me</h2>
+                    <p>Learn more about my skills and experience</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Who Am I?</h3>
+                        <p>I'm Abel Arroyo, a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
+                        <p>My journey in web development has equipped me with a diverse skill set and a keen eye for detail. I'm constantly learning and adapting to new technologies to stay at the forefront of the industry.</p>
+                    </div>
+                    <div class="skills">
+                        <h3>My Skills</h3>
+                        <div class="skills-container">
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>HTML/CSS</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>JavaScript</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>React</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-node-js"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Node.js</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>MongoDB/SQL</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" style="background-color: #f0f4f8;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>My Projects</h2>
+                    <p>Check out some of my recent work</p>
+                </div>
+                <div class="projects-carousel">
+                    <div class="project-card neumorphism">
+                        <div class="project-img">
+                            <img src="https://source.unsplash.com/300x200/?website" alt="E-Commerce Platform Screenshot" loading="lazy" width="300" height="200">
+                        </div>
+                        <div class="project-content">
+                            <h3>E-Commerce Platform</h3>
+                            <p>A full-featured online store with product listings, shopping cart, and secure checkout.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                                <span class="tech-badge"><i class="fab fa-node"></i> Node.js</span>
+                                <span class="tech-badge"><i class="fas fa-database"></i> MongoDB</span>
+                                <span class="tech-badge"><i class="fab fa-stripe"></i> Stripe</span>
+                            </div>
+                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card neumorphism">
+                        <div class="project-img">
+                            <img src="https://source.unsplash.com/300x200/?app" alt="Task Management App Screenshot" loading="lazy" width="300" height="200">
+                        </div>
+                        <div class="project-content">
+                            <h3>Task Management App</h3>
+                            <p>A productivity tool for organizing tasks with features like drag-and-drop, reminders, and team collaboration.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="tech-badge"><i class="fab fa-node"></i> Express</span>
+                                <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            </div>
+                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card neumorphism">
+                        <div class="project-img">
+                            <img src="https://source.unsplash.com/300x200/?dashboard" alt="Analytics Dashboard Screenshot" loading="lazy" width="300" height="200">
+                        </div>
+                        <div class="project-content">
+                            <h3>Analytics Dashboard</h3>
+                            <p>An interactive data visualization platform with real-time updates and customizable widgets.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                                <span class="tech-badge"><i class="fab fa-js"></i> D3.js</span>
+                                <span class="tech-badge"><i class="fas fa-fire"></i> Firebase</span>
+                            </div>
+                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="glassmorphism">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Testimonials</h2>
+                    <p>What clients and colleagues say about me</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"Abel is a highly skilled developer with a keen eye for detail. His work on our project was exceptional."</p>
+                        <h4>John Doe</h4>
+                        <p>CEO, Tech Company</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Working with Abel was a pleasure. He delivered high-quality code and was always willing to go the extra mile."</p>
+                        <h4>Jane Smith</h4>
+                        <p>Project Manager, Web Agency</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Blog</h2>
+                    <p>Insights and articles on web development</p>
+                </div>
+                <div class="blog-posts">
+                    <div class="blog-post">
+                        <h3>Understanding React Hooks</h3>
+                        <p>React Hooks are functions that let you use state and other React features without writing a class...</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                    <div class="blog-post">
+                        <h3>Building a RESTful API with Node.js</h3>
+                        <p>Learn how to build a RESTful API using Node.js and Express, and how to connect it to a MongoDB database...</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="glassmorphism">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Me</h2>
+                    <p>Get in touch for opportunities or inquiries</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <form id="contactForm" action="#" method="post">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Your Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Your Email</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="sr-only">Subject</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <input type="text" id="subject" name="subject" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="sr-only">Your Message</label>
+                                <div class="input-with-icon textarea-container">
+                                    <i class="fas fa-comment"></i>
+                                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-status" id="formStatus"></div>
+                            <button type="submit" class="btn btn-submit">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>I'm always open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:abel.arroyo@example.com">abel.arroyo@example.com</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Phone</h4>
+                                    <p><a href="tel:+11234567890">(123) 456-7890</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Location</h4>
+                                    <p>San Francisco, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links-contact">
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll-to-Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top-btn">↑</button>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <span>AA</span>
+                    <h3>Abel Arroyo</h3>
+                </div>
+                <p>Building exceptional web experiences that combine aesthetics with functionality.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
@@ -26,210 +378,38 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-            </nav>
-        </div>
-    </header>
-
-    <section id="home" class="hero">
-        <video autoplay muted loop class="background-video">
-            <source src="path/to/your/video.mp4" type="video/mp4">
-        </video>
-        <div class="particles">
-            <div class="particle" style="top: 10%; left: 20%;"></div>
-            <div class="particle" style="top: 30%; left: 40%;"></div>
-            <div class="particle" style="top: 50%; left: 60%;"></div>
-            <div class="particle" style="top: 70%; left: 80%;"></div>
-        </div>
-        <div class="container">
-            <h1>Abel Arroyo</h1>
-            <p>Full Stack Web Developer | UI/UX Enthusiast</p>
-            <a href="#projects" class="btn">View My Work</a>
-        </div>
-        <div class="three-d-element">
-            <!-- Add your 3D element here using Three.js or any other library -->
-        </div>
-    </section>
-
-    <!-- Introduction Section -->
-    <section id="introduction" class="introduction">
-        <div class="container">
-            <div class="intro-content">
-                <img src="path/to/your/photo.jpg" alt="Your Photo" class="intro-photo">
-                <div class="intro-text">
-                    <h2>Hi, I'm Abel Arroyo</h2>
-                    <p>I'm a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Web Development</li>
+                        <li>UI/UX Design</li>
+                        <li>Mobile App Development</li>
+                        <li>E-commerce Solutions</li>
+                        <li>Database Design</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:abel.arroyo@example.com">abel.arroyo@example.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+11234567890">(123) 456-7890</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="about" class="glassmorphism">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-                <p>Learn more about my skills and experience</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Who Am I?</h3>
-                    <p>I'm Abel Arroyo, a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
-                    <p>My journey in web development has equipped me with a diverse skill set and a keen eye for detail. I'm constantly learning and adapting to new technologies to stay at the forefront of the industry.</p>
-                </div>
-                <div class="skills">
-                    <h3>My Skills</h3>
-                    <div class="skill-bar">
-                        <h3>HTML/CSS</h3>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <h3>JavaScript</h3>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <h3>React</h3>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <h3>Node.js</h3>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <h3>MongoDB/SQL</h3>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" style="background-color: #f0f4f8;">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Projects</h2>
-                <p>Check out some of my recent work</p>
-            </div>
-            <div class="projects-carousel">
-                <div class="project-card neumorphism">
-                    <div class="project-img" style="background: url('https://source.unsplash.com/300x200/?website') center center/cover"></div>
-                    <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-featured online store with product listings, shopping cart, and secure checkout.</p>
-                        <p><strong>Technologies:</strong> React, Node.js, MongoDB, Stripe</p>
-                        <a href="#" class="btn" style="margin-top: 10px;">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card neumorphism">
-                    <div class="project-img" style="background: url('https://source.unsplash.com/300x200/?app') center center/cover"></div>
-                    <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>A productivity tool for organizing tasks with features like drag-and-drop, reminders, and team collaboration.</p>
-                        <p><strong>Technologies:</strong> JavaScript, Express, PostgreSQL</p>
-                        <a href="#" class="btn" style="margin-top: 10px;">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card neumorphism">
-                    <div class="project-img" style="background: url('https://source.unsplash.com/300x200/?dashboard') center center/cover"></div>
-                    <div class="project-content">
-                        <h3>Analytics Dashboard</h3>
-                        <p>An interactive data visualization platform with real-time updates and customizable widgets.</p>
-                        <p><strong>Technologies:</strong> React, D3.js, Firebase</p>
-                        <a href="#" class="btn" style="margin-top: 10px;">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="glassmorphism">
-        <div class="container">
-            <div class="section-title">
-                <h2>Testimonials</h2>
-                <p>What clients and colleagues say about me</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>"Abel is a highly skilled developer with a keen eye for detail. His work on our project was exceptional."</p>
-                    <h4>John Doe</h4>
-                    <p>CEO, Tech Company</p>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Working with Abel was a pleasure. He delivered high-quality code and was always willing to go the extra mile."</p>
-                    <h4>Jane Smith</h4>
-                    <p>Project Manager, Web Agency</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="section-title">
-                <h2>Blog</h2>
-                <p>Insights and articles on web development</p>
-            </div>
-            <div class="blog-posts">
-                <div class="blog-post">
-                    <h3>Understanding React Hooks</h3>
-                    <p>React Hooks are functions that let you use state and other React features without writing a class...</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-                <div class="blog-post">
-                    <h3>Building a RESTful API with Node.js</h3>
-                    <p>Learn how to build a RESTful API using Node.js and Express, and how to connect it to a MongoDB database...</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Me</h2>
-                <p>Get in touch for opportunities or inquiries</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <form action="#" method="post">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <input type="text" name="subject" placeholder="Subject">
-                        <textarea name="message" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
-                    <p><strong>Email:</strong> abel.arroyo@example.com</p>
-                    <p><strong>Phone:</strong> (123) 456-7890</p>
-                    <p><strong>Location:</strong> San Francisco, CA</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scroll-to-Top Button -->
-    <button id="scrollToTopBtn" class="scroll-to-top-btn">↑</button>
-
-    <footer>
-        <div class="container">
+        
+        <div class="footer-bottom">
             <p>© 2025 Abel Arroyo. All Rights Reserved.</p>
-            <ul class="social-links">
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">Twitter</a></li>
-            </ul>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Dev.to"><i class="fab fa-dev"></i></a>
+            </div>
         </div>
     </footer>
 
