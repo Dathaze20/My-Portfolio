@@ -931,7 +931,7 @@ body.dark-mode .skill-icon {
 
 /* Scroll Animation Classes */
 .scroll-element {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
