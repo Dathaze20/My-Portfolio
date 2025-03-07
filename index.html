@@ -14,6 +14,308 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Add Font Awesome for better icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="scripts.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .navbar .logo span {
+            color: #ff6f61;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #4a90e2, #ff6f61);
+            color: #fff;
+            padding: 100px 0;
+        }
+
+        .btn {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e55b50;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .neumorphism {
+            background: #e0e5ec;
+            border-radius: 10px;
+            box-shadow: 7px 7px 15px #a3b1c6, -7px -7px 15px #ffffff;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #ff6f61;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #e55b50;
+        }
+
+        .social-links a {
+            color: #ff6f61;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #e55b50;
+        }
+
+        /* Add smooth scrolling for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhance form input styles */
+        .input-with-icon input,
+        .input-with-icon textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-with-icon input:focus,
+        .input-with-icon textarea:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        /* Add hover effect to project cards */
+        .project-card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Enhance dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #357ab8;
+        }
+
+        /* Add animations to particles */
+        .particles .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Optimize images for faster loading */
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 100%;
+        }
+
+        /* Lazy load images */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        img[loading="lazy"][src] {
+            opacity: 1;
+        }
+
+        /* Minimize CSS and JavaScript */
+        /* Use a tool like cssnano and terser for minification */
+
+        /* Use webp format for images */
+        /* Example: <img src="image.webp" alt="..."> */
+
+        /* Responsive styles for mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #4a90e2;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar .nav-links a {
+                padding: 10px;
+                border-bottom: 1px solid #fff;
+            }
+
+            .navbar .nav-toggler {
+                display: block;
+                cursor: pointer;
+            }
+
+            .navbar .nav-toggler span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: #fff;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .navbar .nav-toggler.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .navbar .nav-toggler.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar .nav-toggler.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .introduction .intro-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .introduction .intro-photo {
+                margin-bottom: 20px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .skills-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-card {
+                margin-bottom: 20px;
+            }
+
+            .testimonials-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .blog-posts {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-form,
+            .contact-info {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Page Loader -->
@@ -55,7 +357,7 @@
     </header>
 
     <main id="main-content">
-        <section id="home" class="hero">
+        <section id="home" class="hero animate__animated animate__fadeIn">
             <video autoplay muted loop class="background-video" preload="metadata">
                 <source src="https://via.placeholder.com/150" type="video/mp4" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
             </video>
@@ -413,6 +715,58 @@
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="scripts.js" async></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // GSAP animations
+            gsap.from('.hero', { duration: 1, opacity: 0, y: -50 });
+            gsap.from('.navbar', { duration: 1, opacity: 0, y: -50, delay: 0.5 });
+            gsap.from('.intro-content', { duration: 1, opacity: 0, x: -50, delay: 1 });
+            gsap.from('.skills-container .skill-item', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 1.5 });
+            gsap.from('.project-card', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 2 });
+            gsap.from('.testimonial-card', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 2.5 });
+            gsap.from('.blog-post', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 3 });
+            gsap.from('.contact-form', { duration: 1, opacity: 0, x: -50, delay: 3.5 });
+            gsap.from('.contact-info', { duration: 1, opacity: 0, x: 50, delay: 3.5 });
+
+            // Lazy load images
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            lazyImages.forEach(img => {
+                img.src = img.dataset.src;
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Dark mode toggle
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                darkModeToggle.setAttribute('aria-checked', isDarkMode);
+                darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+
+            // Scroll-to-top button
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>

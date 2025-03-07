@@ -1,9 +1,9 @@
 /* Improved styles for better UI/UX */
 body {
-    background: var(--background-color) url('https://via.placeholder.com/150') repeat;
+    background: var(--background-color);
     color: var(--text-color);
-    line-height: 1.8;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -29,6 +29,26 @@ body.dark-mode {
     --text-color: #e0e0e0;
     --primary-color: #4dabf7;
     --secondary-color: #adb5bd;
+}
+
+body.dark-mode header {
+    background-color: rgba(18, 18, 18, 0.9);
+}
+
+body.dark-mode .nav-links li a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-links li a:hover {
+    background-color: rgba(77, 171, 247, 0.1);
+}
+
+body.dark-mode .dark-mode-toggle {
+    background: rgba(0, 123, 255, 0.2);
+}
+
+body.dark-mode .scroll-to-top-btn {
+    background: #4dabf7;
 }
 
 /* Neumorphism */
@@ -269,6 +289,10 @@ body.dark-mode .nav-links li a:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
     color: #ffffff !important;
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
 
 /* Background Particles */
@@ -632,6 +656,7 @@ footer {
     border-radius: 50%;
     color: white;
     transition: all 0.3s ease;
+    margin-right: 10px;
 }
 
 .social-links a:hover {
@@ -946,6 +971,8 @@ body.dark-mode .skill-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
 }
 
 .testimonial-card {
@@ -957,6 +984,10 @@ body.dark-mode .skill-icon {
     width: 100%;
     max-width: 600px;
     text-align: center;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 80%;
+    margin-right: 20px;
 }
 
 body.dark-mode .testimonial-card {
@@ -1000,6 +1031,12 @@ a:hover, .btn:hover {
     transform: translateY(-2px);
 }
 
+/* Highlight current section in navigation */
+.nav-links a.active {
+    font-weight: bold;
+    color: #ff6f61;
+}
+
 /* Scroll-to-Top Button */
 .scroll-to-top-btn {
     position: fixed;
@@ -1021,6 +1058,10 @@ a:hover, .btn:hover {
 .scroll-to-top-btn:hover {
     background: #0056b3;
     transform: scale(1.1);
+}
+
+body.dark-mode .scroll-to-top-btn {
+    background: #4dabf7;
 }
 
 /* Enhanced Contact Section */
@@ -1132,6 +1173,7 @@ a:hover, .btn:hover {
     text-align: center;
     border-radius: 8px;
     display: none;
+    color: #ff6f61;
 }
 
 .form-status.success {
@@ -1146,6 +1188,10 @@ a:hover, .btn:hover {
     background-color: rgba(220, 53, 69, 0.1);
     border: 1px solid #dc3545;
     color: #dc3545;
+}
+
+.form-status.loading {
+    display: block;
 }
 
 /* Contact info styles */
@@ -1264,28 +1310,6 @@ a:hover, .btn:hover {
 .social-links-contact a:hover {
     transform: translateY(-8px) rotate(360deg);
     background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
-}
-
-/* Dark mode adjustments */
-body.dark-mode .input-with-icon input,
-body.dark-mode .input-with-icon textarea {
-    background-color: rgba(30, 30, 30, 0.8);
-    color: #e0e0e0;
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .contact-icon {
-    background: linear-gradient(45deg, rgba(77, 171, 247, 0.1), rgba(0, 86, 179, 0.1));
-}
-
-body.dark-mode .contact-item:hover .contact-icon {
-    background: linear-gradient(45deg, var(--primary-color), #0077cc);
-}
-
-@media (max-width: 768px) {
-    .contact-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1447,5 +1471,152 @@ main {
     /* Ensure proper spacing for mobile screens */
     section {
         padding-top: 80px;
+    }
+}
+
+/* Add smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+    }
+    .navbar .nav-toggler {
+        display: block;
+    }
+    .navbar .nav-links.active {
+        display: block;
+    }
+}
+
+/* Highlight current section in navigation */
+.nav-links a.active {
+    font-weight: bold;
+    color: #ff6f61;
+}
+
+/* Loading indicator for form submission */
+.form-status {
+    display: none;
+    color: #ff6f61;
+}
+.form-status.loading {
+    display: block;
+}
+
+/* Consistent design adjustments */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Call to Action (CTA) enhancements */
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+/* Interactive elements */
+.btn:hover {
+    background-color: #e55b50;
+}
+
+/* Accessibility improvements */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Testimonials slider */
+.testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+.testimonial-card {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 80%;
+    margin-right: 20px;
+}
+
+/* Social media integration */
+.social-links a {
+    margin-right: 10px;
+}
+
+/* User feedback for button clicks */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Page loader styles */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.loader {
+    display: flex;
+}
+.loader .circle {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background: #4a90e2;
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+}
+.loader .circle:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.loader .circle:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes bounce {
+    to {
+        opacity: 0.3;
+        transform: translate3d(0, -16px, 0);
+    }
+}
+.loader-text {
+    margin-left: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+.loader-dots::after {
+    content: '';
+    display: inline-block;
+    animation: ellipsis 1.25s infinite;
+}
+@keyframes ellipsis {
+    0% {
+        content: '';
+    }
+    33% {
+        content: '.';
+    }
+    66% {
+        content: '..';
+    }
+    100% {
+        content: '...';
     }
 }

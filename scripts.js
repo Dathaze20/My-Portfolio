@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const body = document.body;
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
         const formStatus = document.getElementById('formStatus');
+        const contactForm = document.getElementById('contactForm');
         
         // Check for saved theme preference
         if (localStorage.getItem('darkMode') === 'enabled') {
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         navToggler.classList.remove('open');
                         navToggler.setAttribute('aria-expanded', 'false');
                     }
+                
                 }
             });
         });
@@ -144,30 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.style.transition = 'background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease';
             });
         }
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]') || [];
+        
         // Image lazy loading optimization
-        if ('loading' in HTMLImageElement.prototype) {
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            lazyImages.forEach(img => {
-                // Make sure src is set correctly
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                }
-            });
-        } else {
-            // Fallback for browsers that don't support native lazy loading
-            const lazyLoadScript = document.createElement('script');
-            lazyLoadScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-            document.body.appendChild(lazyLoadScript);
-            
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            lazyImages.forEach(img => {
-                img.classList.add('lazyload');
-                if (img.src) {
-                    img.dataset.src = img.src;
-                }
-            });
-        }
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+        });
         
         // Use Intersection Observer for scroll animations - better performance
         const scrollElements = document.querySelectorAll('.scroll-element');
@@ -214,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         }
-            const sections = document.querySelectorAll('section') || [];
+        
         // Highlight active section in navigation
         function highlightActiveSection() {
             const sections = document.querySelectorAll('section');
@@ -243,8 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Enhanced Form Validation with visual feedback and accessibility
-        const contactForm = document.getElementById('contactForm');
-        
         if (contactForm) {
             // Add novalidate attribute to disable browser's default validation
             contactForm.setAttribute('novalidate', true);
