@@ -10,6 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const darkModeToggle = document.querySelector('.dark-mode-toggle');
         const heroSection = document.querySelector('.hero');
         const header = document.querySelector('header');
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        const anchors = document.querySelectorAll('a[href^="#"]');
+        
+        // Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
         
         // Handle page loader with animation
         function hideLoader() {
@@ -37,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Header scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', debounce(function() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
             if (scrollTop > 30) {
@@ -47,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Show/hide scroll to top button
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             if (scrollToTopBtn) {
                 if (scrollTop > 300) {
                     scrollToTopBtn.classList.add('show');
@@ -56,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-        }, { passive: true });
+        }, 150), { passive: true });
         
         // Initialize scroll animations
         initializeScrollObserver();
@@ -200,7 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Scroll to top button
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
         if (scrollToTopBtn) {
             scrollToTopBtn.addEventListener('click', function() {
                 window.scrollTo({
@@ -211,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchors.forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
@@ -366,35 +377,9 @@ document.addEventListener('DOMContentLoaded', function() {
         initTypewriter();
         
         // Optimize image loading
-        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        const src = img.getAttribute('data-src');
-                        if (src) {
-                            img.src = src;
-                            img.removeAttribute('data-src');
-                        }
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            lazyImages.forEach(img => {
-                imageObserver.observe(img);
-            });
-        } else {
-            // Fallback for browsers that don't support IntersectionObserver
-            lazyImages.forEach(img => {
-                const src = img.getAttribute('data-src');
-                if (src) {
-                    img.src = src;
-                    img.removeAttribute('data-src');
-                }
-            });
-        }
+        lazyImages.forEach(img => {
+            img.src = img.getAttribute('data-src');
+        });
     } catch (error) {
         console.error('Error in portfolio scripts:', error);
         // Ensure page loader is hidden even if scripts fail
@@ -425,7 +410,6 @@ window.addEventListener('load', function() {
 // Core UI elements
 const navLinks = document.querySelector('.nav-links');
 const navLinksList = document.querySelectorAll('.nav-links a');
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 const formStatus = document.getElementById('formStatus');
 const contactForm = document.getElementById('contactForm');
 
@@ -549,7 +533,6 @@ function applyDarkModeTransition() {
 }
 
 // Image lazy loading optimization
-const lazyImages = document.querySelectorAll('img[loading="lazy"]');
 lazyImages.forEach(img => {
     img.src = img.dataset.src;
 });
@@ -1181,4 +1164,486 @@ window.addEventListener('load', () => {
             initializeGSAPAnimations();
         }
     }, 500);
+});
+
+// Project Showcase Enhancement Functions
+
+// Initialize project showcase
+function initializeProjectShowcase() {
+    const projectsCarousel = document.querySelector('.projects-carousel');
+    const projectCards = document.querySelectorAll('.project-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const carouselDots = document.querySelectorAll('.dot');
+    const prevButton = document.querySelector('.carousel-control.prev');
+    const nextButton = document.querySelector('.carousel-control.next');
+    const projectDetailsButtons = document.querySelectorAll('.project-details-btn');
+    const projectModal = document.getElementById('projectModal');
+    const modalClose = projectModal ? projectModal.querySelector('.modal-close') : null;
+    const modalBody = projectModal ? projectModal.querySelector('.modal-body') : null;
+    
+    let currentSlideIndex = 0;
+    const cardsPerView = getCardsPerView();
+    
+    // Function to determine how many cards should be visible at once based on viewport
+    function getCardsPerView() {
+        if (window.innerWidth >= 1200) return 4;
+        if (window.innerWidth >= 992) return 3;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+    }
+    
+    // Project filtering functionality
+    if (filterButtons.length > 0 && projectCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active state for filter buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Filter projects
+                filterProjects(filterValue);
+            });
+        });
+        
+        // Filter projects based on category
+        function filterProjects(category) {
+            projectCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || card.getAttribute('data-category').includes(category)) {
+                        card.style.display = '';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                            card.classList.add('animate-in');
+                            
+                            // Remove animation class after animation completes
+                            setTimeout(() => {
+                                card.classList.remove('animate-in');
+                            }, 400);
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }, 300);
+            });
+            
+            // Reset carousel position after filtering
+            resetCarousel();
+        }
+    }
+    
+    // Carousel navigation with dots
+    if (carouselDots.length > 0) {
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                navigateToSlide(index);
+                updateActiveDot(index);
+            });
+        });
+    }
+    
+    // Previous slide button
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            navigatePrevSlide();
+        });
+    }
+    
+    // Next slide button
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            navigateNextSlide();
+        });
+    }
+    
+    // Navigate to specific slide
+    function navigateToSlide(slideIndex) {
+        if (!projectsCarousel) return;
+        
+        currentSlideIndex = slideIndex;
+        const cardWidth = projectCards[0].offsetWidth + parseInt(window.getComputedStyle(projectCards[0]).marginRight);
+        projectsCarousel.scrollTo({
+            left: slideIndex * cardWidth,
+            behavior: 'smooth'
+        });
+        
+        updateActiveDot(slideIndex);
+    }
+    
+    // Navigate to previous slide
+    function navigatePrevSlide() {
+        if (currentSlideIndex > 0) {
+            navigateToSlide(currentSlideIndex - 1);
+        } else {
+            // Loop to the last slide
+            navigateToSlide(Math.ceil(projectCards.length / cardsPerView) - 1);
+        }
+    }
+    
+    // Navigate to next slide
+    function navigateNextSlide() {
+        if (currentSlideIndex < Math.ceil(projectCards.length / cardsPerView) - 1) {
+            navigateToSlide(currentSlideIndex + 1);
+        } else {
+            // Loop back to first slide
+            navigateToSlide(0);
+        }
+    }
+    
+    // Update active dot indicator
+    function updateActiveDot(index) {
+        if (carouselDots.length === 0) return;
+        
+        carouselDots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            dot.setAttribute('aria-selected', 'false');
+            
+            if (i === index) {
+                dot.classList.add('active');
+                dot.setAttribute('aria-selected', 'true');
+            }
+        });
+    }
+    
+    // Reset carousel position
+    function resetCarousel() {
+        if (!projectsCarousel) return;
+        
+        currentSlideIndex = 0;
+        projectsCarousel.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+        });
+        updateActiveDot(0);
+    }
+    
+    // Touch swipe support for carousel
+    let startX, endX;
+    const threshold = 50; // minimum distance for swipe
+    
+    if (projectsCarousel) {
+        projectsCarousel.addEventListener('touchstart', e => {
+            startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        projectsCarousel.addEventListener('touchend', e => {
+            endX = e.changedTouches[0].screenX;
+            
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) >= threshold) {
+                if (diff > 0) {
+                    // Swipe left, go to next slide
+                    navigateNextSlide();
+                } else {
+                    // Swipe right, go to previous slide
+                    navigatePrevSlide();
+                }
+            }
+        }, { passive: true });
+    }
+    
+    // Project detail modal functionality
+    if (projectDetailsButtons.length > 0 && projectModal && modalClose && modalBody) {
+        projectDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                
+                // Load project details (in a real project, this could fetch from an API)
+                const projectDetails = getProjectDetails(projectId);
+                
+                // Populate modal content
+                populateProjectModal(projectDetails);
+                
+                // Show modal with animation
+                projectModal.classList.add('active');
+                projectModal.setAttribute('aria-hidden', 'false');
+                
+                // Trap focus in modal for accessibility
+                trapFocus(projectModal);
+                
+                // Prevent body scrolling
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modal button
+        modalClose.addEventListener('click', closeProjectModal);
+        
+        // Close on background click
+        projectModal.addEventListener('click', e => {
+            if (e.target === projectModal) {
+                closeProjectModal();
+            }
+        });
+        
+        // Close on ESC key press
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+                closeProjectModal();
+            }
+        });
+        
+        function closeProjectModal() {
+            projectModal.classList.remove('active');
+            projectModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+        
+        function populateProjectModal(projectData) {
+            // Create modal content with project details
+            const content = `
+                <div class="modal-project">
+                    <div class="modal-project-header">
+                        <h3 id="modalTitle">${projectData.title}</h3>
+                        <div class="modal-project-meta">
+                            <span class="modal-project-category">${projectData.category}</span>
+                            <span class="modal-project-date">${projectData.date}</span>
+                        </div>
+                    </div>
+                    <div class="modal-project-gallery">
+                        ${projectData.images.map(img => `
+                            <div class="modal-project-image">
+                                <img src="${img.src}" alt="${img.alt}" loading="lazy">
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="modal-project-description">
+                        <h4>Project Overview</h4>
+                        <p>${projectData.description}</p>
+                        
+                        <h4>Technologies Used</h4>
+                        <div class="modal-tech-stack">
+                            ${projectData.technologies.map(tech => `
+                                <span class="tech-badge">
+                                    <i class="${tech.icon}"></i> ${tech.name}
+                                </span>
+                            `).join('')}
+                        </div>
+                        
+                        <h4>Key Features</h4>
+                        <ul class="modal-features-list">
+                            ${projectData.features.map(feature => `
+                                <li>${feature}</li>
+                            `).join('')}
+                        </ul>
+                        
+                        <div class="modal-project-links">
+                            <a href="${projectData.liveLink}" class="btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="${projectData.repoLink}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modalBody.innerHTML = content;
+        }
+        
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll('a[href], button, textarea, input[type="text"], input[type="checkbox"], [tabindex]:not([tabindex="-1"])');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            // Set focus on first element
+            setTimeout(() => {
+                firstElement.focus();
+            }, 100);
+            
+            // Trap focus in modal
+            element.addEventListener('keydown', e => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        // If shift + tab and on first element, go to last element
+                        if (document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        }
+                    } else {
+                        // If just tab and on last element, circle back to first element
+                        if (document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                }
+            });
+        }
+    }
+    
+    // Sample project data (in a real app, this would come from a database or API)
+    function getProjectDetails(projectId) {
+        const projectsData = {
+            'ecommerce': {
+                title: 'E-Commerce Platform',
+                category: 'Web Application',
+                date: 'January 2023',
+                description: 'A comprehensive e-commerce solution with product management, shopping cart functionality, user authentication, and secure payment processing. The platform features a responsive design that adapts to various screen sizes and devices.',
+                images: [
+                    { src: 'https://source.unsplash.com/800x450/?ecommerce', alt: 'E-Commerce Platform Dashboard' },
+                    { src: 'https://source.unsplash.com/800x450/?shopping', alt: 'Shopping Cart Interface' }
+                ],
+                technologies: [
+                    { name: 'React', icon: 'fab fa-react' },
+                    { name: 'Node.js', icon: 'fab fa-node' },
+                    { name: 'MongoDB', icon: 'fas fa-database' },
+                    { name: 'Stripe', icon: 'fab fa-stripe' }
+                ],
+                features: [
+                    'User authentication and profile management',
+                    'Product catalog with search, filter, and sorting',
+                    'Shopping cart and wishlist functionality',
+                    'Secure payment processing with Stripe',
+                    'Order tracking and management',
+                    'Admin dashboard for product and user management'
+                ],
+                liveLink: '#',
+                repoLink: '#'
+            },
+            'taskapp': {
+                title: 'Task Management App',
+                category: 'Web & Mobile Application',
+                date: 'March 2023',
+                description: 'A productivity tool that helps users organize tasks, set priorities, and track progress. The application includes features like drag-and-drop task organization, reminders, and team collaboration tools.',
+                images: [
+                    { src: 'https://source.unsplash.com/800x450/?tasks', alt: 'Task Management Dashboard' },
+                    { src: 'https://source.unsplash.com/800x450/?productivity', alt: 'Task Organization Interface' }
+                ],
+                technologies: [
+                    { name: 'JavaScript', icon: 'fab fa-js' },
+                    { name: 'Express', icon: 'fab fa-node' },
+                    { name: 'PostgreSQL', icon: 'fas fa-database' }
+                ],
+                features: [
+                    'Task creation, categorization, and organization',
+                    'Drag-and-drop interface for task management',
+                    'Calendar integration and deadline reminders',
+                    'Team collaboration and task assignment',
+                    'Progress tracking and reporting',
+                    'Daily, weekly, and monthly goal setting'
+                ],
+                liveLink: '#',
+                repoLink: '#'
+            },
+            'analytics': {
+                title: 'Analytics Dashboard',
+                category: 'Web Application & Data Visualization',
+                date: 'May 2023',
+                description: 'An interactive data visualization platform that helps businesses analyze performance metrics, customer behavior, and market trends. The dashboard features real-time updates and customizable widgets.',
+                images: [
+                    { src: 'https://source.unsplash.com/800x450/?dashboard', alt: 'Analytics Dashboard Main View' },
+                    { src: 'https://source.unsplash.com/800x450/?charts', alt: 'Data Visualization Charts' }
+                ],
+                technologies: [
+                    { name: 'React', icon: 'fab fa-react' },
+                    { name: 'D3.js', icon: 'fab fa-js' },
+                    { name: 'Firebase', icon: 'fas fa-fire' }
+                ],
+                features: [
+                    'Real-time data processing and visualization',
+                    'Customizable dashboard with drag-and-drop widgets',
+                    'Comprehensive reporting with exportable formats',
+                    'User behavior analytics and conversion tracking',
+                    'Integration with multiple data sources',
+                    'Automated insights and trend identification'
+                ],
+                liveLink: '#',
+                repoLink: '#'
+            },
+            'healthapp': {
+                title: 'Health Tracking Mobile App',
+                category: 'Mobile Application',
+                date: 'July 2023',
+                description: 'A cross-platform mobile application designed to help users track their fitness activities, nutrition intake, and overall health metrics. The app provides personalized recommendations and insights based on user data.',
+                images: [
+                    { src: 'https://source.unsplash.com/800x450/?fitness', alt: 'Health App Dashboard' },
+                    { src: 'https://source.unsplash.com/800x450/?health', alt: 'Fitness Tracking Interface' }
+                ],
+                technologies: [
+                    { name: 'React Native', icon: 'fab fa-react' },
+                    { name: 'Redux', icon: 'fas fa-code' },
+                    { name: 'Firebase', icon: 'fas fa-fire' }
+                ],
+                features: [
+                    'Activity tracking with GPS integration',
+                    'Nutrition logging and meal planning',
+                    'Health metrics monitoring (heart rate, sleep, etc.)',
+                    'Workout planning and exercise library',
+                    'Progress visualization and goal setting',
+                    'Social sharing and community challenges'
+                ],
+                liveLink: '#',
+                repoLink: '#'
+            }
+        };
+        
+        return projectsData[projectId] || {
+            title: 'Project Details',
+            category: 'Unknown Category',
+            date: 'No Date',
+            description: 'No description available for this project.',
+            images: [{ src: 'https://source.unsplash.com/800x450/?coding', alt: 'Project Image' }],
+            technologies: [{ name: 'Various Technologies', icon: 'fas fa-code' }],
+            features: ['Features unavailable'],
+            liveLink: '#',
+            repoLink: '#'
+        };
+    }
+    
+    // Handle window resize events
+    window.addEventListener('resize', debounce(() => {
+        const newCardsPerView = getCardsPerView();
+        if (cardsPerView !== newCardsPerView) {
+            // Update cards per view and reset carousel if needed
+            cardsPerView = newCardsPerView;
+            if (currentSlideIndex > Math.ceil(projectCards.length / cardsPerView) - 1) {
+                resetCarousel();
+            }
+        }
+    }, 250));
+    
+    // Initialize with first filter (All)
+    if (filterButtons.length > 0) {
+        filterButtons[0].click();
+    }
+    
+    // Initialize tooltips for tech badges
+    initializeTechTooltips();
+}
+
+// Initialize tooltips for tech stack badges
+function initializeTechTooltips() {
+    const techBadges = document.querySelectorAll('.tech-badge[data-tooltip]');
+    
+    techBadges.forEach(badge => {
+        const tooltip = badge.getAttribute('data-tooltip');
+        if (!tooltip) return;
+        
+        // This is just for enhancing the tooltip behavior, 
+        // the main tooltip functionality is handled by CSS
+        badge.addEventListener('mouseenter', function() {
+            this.setAttribute('aria-label', tooltip);
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.removeAttribute('aria-label');
+        });
+    });
+}
+
+// Initialize the project showcase when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeProjectShowcase();
 });

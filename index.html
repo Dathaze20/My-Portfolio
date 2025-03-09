@@ -13,14 +13,25 @@
     
     <!-- Critical CSS for faster initial rendering -->
     <style>
+        /* CSS Variables for Design System */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #ff6f61;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-radius: 5px;
+            --transition-duration: 0.3s;
+        }
+
         /* Critical styles for immediate display */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
-        
+
         .page-loader {
             position: fixed;
             top: 0;
@@ -33,44 +44,44 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity var(--transition-duration) ease;
         }
-        
+
         .loader {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .circle {
             width: 15px;
             height: 15px;
             border-radius: 50%;
             margin: 0 5px;
-            background-color: #4361ee;
+            background-color: var(--primary-color);
             animation: bounce 0.6s infinite alternate;
         }
-        
+
         .circle:nth-child(2) {
             animation-delay: 0.2s;
         }
-        
+
         .circle:nth-child(3) {
             animation-delay: 0.4s;
         }
-        
+
         @keyframes bounce {
             to {
                 transform: translateY(-15px);
                 opacity: 0.5;
             }
         }
-        
+
         .page-loaded .page-loader {
             opacity: 0;
             pointer-events: none;
         }
-        
+
         /* Make sure header is visible */
         header {
             position: fixed;
@@ -82,12 +93,12 @@
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Adjust main content padding to prevent it from being hidden by the header */
         main {
             padding-top: 80px;
         }
-        
+
         /* Ensure sections are properly visible */
         section {
             min-height: 300px;
@@ -107,21 +118,21 @@
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
             margin-bottom: 10px;
-            transition: border-color 0.3s ease;
+            transition: border-color var(--transition-duration) ease;
         }
 
         .input-with-icon input:focus,
         .input-with-icon textarea:focus {
-            border-color: #4a90e2;
+            border-color: var(--primary-color);
             outline: none;
         }
 
         /* Add hover effect to project cards */
         .project-card:hover {
             transform: translateY(-10px);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-duration) ease;
         }
 
         /* Enhance dark mode toggle */
@@ -129,12 +140,12 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: #4a90e2;
+            background-color: var(--primary-color);
             color: #fff;
             padding: 10px;
             border-radius: 50%;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color var(--transition-duration) ease;
         }
 
         .dark-mode-toggle:hover {
@@ -174,18 +185,12 @@
         /* Lazy load images */
         img[loading="lazy"] {
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity var(--transition-duration) ease-in-out;
         }
 
         img[loading="lazy"][src] {
             opacity: 1;
         }
-
-        /* Minimize CSS and JavaScript */
-        /* Use a tool like cssnano and terser for minification */
-
-        /* Use webp format for images */
-        /* Example: <img src="image.webp" alt="..."> */
 
         /* Responsive styles for mobile */
         @media (max-width: 768px) {
@@ -196,7 +201,7 @@
             .navbar .nav-links {
                 display: none;
                 flex-direction: column;
-                background-color: #4a90e2;
+                background-color: var(--primary-color);
                 position: absolute;
                 top: 60px;
                 right: 0;
@@ -220,7 +225,7 @@
                 height: 3px;
                 background-color: #fff;
                 margin: 5px 0;
-                transition: all 0.3s ease;
+                transition: all var(--transition-duration) ease;
             }
 
             .navbar .nav-toggler.active span:nth-child(1) {
@@ -765,58 +770,195 @@
             </div>
         </section>
 
-        <section id="projects" style="background-color: #f0f4f8;">
+        <!-- Project section with enhanced interactive features -->
+        <section id="projects" class="projects-section">
             <div class="container">
-                <div class="section-title">
+                <header class="section-title">
                     <h2>My Projects</h2>
                     <p>Check out some of my recent work</p>
+                </header>
+                
+                <!-- Project category filters -->
+                <div class="project-filters" role="tablist" aria-label="Project categories">
+                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" aria-controls="project-grid">All</button>
+                    <button class="filter-btn" data-filter="web" role="tab" aria-selected="false" aria-controls="project-grid">Web Apps</button>
+                    <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false" aria-controls="project-grid">Mobile Apps</button>
+                    <button class="filter-btn" data-filter="design" role="tab" aria-selected="false" aria-controls="project-grid">UI/UX Design</button>
                 </div>
-                <div class="projects-carousel">
-                    <div class="project-card neumorphism">
-                        <div class="project-img">
-                            <img data-src="https://source.unsplash.com/300x200/?website" alt="E-Commerce Platform Screenshot" loading="lazy" width="300" height="200">
-                        </div>
-                        <div class="project-content">
-                            <h3>E-Commerce Platform</h3>
-                            <p>A full-featured online store with product listings, shopping cart, and secure checkout.</p>
-                            <div class="tech-stack">
-                                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
-                                <span class="tech-badge"><i class="fab fa-node"></i> Node.js</span>
-                                <span class="tech-badge"><i class="fas fa-database"></i> MongoDB</span>
-                                <span class="tech-badge"><i class="fab fa-stripe"></i> Stripe</span>
+                
+                <!-- Project grid/carousel container -->
+                <div class="projects-container">
+                    <div class="projects-carousel" id="project-grid" role="tabpanel" aria-label="Project showcase">
+                        <!-- E-Commerce Project Card -->
+                        <article class="project-card neumorphism" data-category="web">
+                            <figure class="project-img">
+                                <img data-src="https://source.unsplash.com/300x200/?website" alt="E-Commerce Platform Screenshot" loading="lazy" width="300" height="200">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" aria-label="View project live site">
+                                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#" class="project-link" aria-label="View project source code">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="project-content">
+                                <h3>E-Commerce Platform</h3>
+                                <p>A full-featured online store with product listings, shopping cart, and secure checkout.</p>
+                                <div class="tech-stack" aria-label="Technologies used">
+                                    <span class="tech-badge" data-tooltip="React.js frontend framework">
+                                        <i class="fab fa-react" aria-hidden="true"></i> React
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="Node.js backend">
+                                        <i class="fab fa-node" aria-hidden="true"></i> Node.js
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="MongoDB database">
+                                        <i class="fas fa-database" aria-hidden="true"></i> MongoDB
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="Stripe payment processing">
+                                        <i class="fab fa-stripe" aria-hidden="true"></i> Stripe
+                                    </span>
+                                </div>
+                                <button class="btn project-details-btn" data-project="ecommerce" aria-label="View E-Commerce Platform details">
+                                    Project Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </button>
                             </div>
-                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                        </article>
+                        
+                        <!-- Task Management App Card -->
+                        <article class="project-card neumorphism" data-category="web mobile">
+                            <figure class="project-img">
+                                <img data-src="https://source.unsplash.com/300x200/?app" alt="Task Management App Screenshot" loading="lazy" width="300" height="200">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" aria-label="View project live site">
+                                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#" class="project-link" aria-label="View project source code">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="project-content">
+                                <h3>Task Management App</h3>
+                                <p>A productivity tool for organizing tasks with features like drag-and-drop, reminders, and team collaboration.</p>
+                                <div class="tech-stack" aria-label="Technologies used">
+                                    <span class="tech-badge" data-tooltip="JavaScript programming language">
+                                        <i class="fab fa-js" aria-hidden="true"></i> JavaScript
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="Express.js web framework">
+                                        <i class="fab fa-node" aria-hidden="true"></i> Express
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="PostgreSQL database">
+                                        <i class="fas fa-database" aria-hidden="true"></i> PostgreSQL
+                                    </span>
+                                </div>
+                                <button class="btn project-details-btn" data-project="taskapp" aria-label="View Task Management App details">
+                                    Project Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </article>
+                        
+                        <!-- Analytics Dashboard Card -->
+                        <article class="project-card neumorphism" data-category="web design">
+                            <figure class="project-img">
+                                <img data-src="https://source.unsplash.com/300x200/?dashboard" alt="Analytics Dashboard Screenshot" loading="lazy" width="300" height="200">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" aria-label="View project live site">
+                                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#" class="project-link" aria-label="View project source code">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="project-content">
+                                <h3>Analytics Dashboard</h3>
+                                <p>An interactive data visualization platform with real-time updates and customizable widgets.</p>
+                                <div class="tech-stack" aria-label="Technologies used">
+                                    <span class="tech-badge" data-tooltip="React.js frontend framework">
+                                        <i class="fab fa-react" aria-hidden="true"></i> React
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="D3.js data visualization library">
+                                        <i class="fab fa-js" aria-hidden="true"></i> D3.js
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="Firebase backend">
+                                        <i class="fas fa-fire" aria-hidden="true"></i> Firebase
+                                    </span>
+                                </div>
+                                <button class="btn project-details-btn" data-project="analytics" aria-label="View Analytics Dashboard details">
+                                    Project Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </article>
+                        
+                        <!-- Mobile App Design Card -->
+                        <article class="project-card neumorphism" data-category="mobile design">
+                            <figure class="project-img">
+                                <img data-src="https://source.unsplash.com/300x200/?mobileapp" alt="Mobile App Design Screenshot" loading="lazy" width="300" height="200">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" aria-label="View project live site">
+                                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#" class="project-link" aria-label="View project source code">
+                                            <i class="fab fa-github" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="project-content">
+                                <h3>Health Tracking Mobile App</h3>
+                                <p>A cross-platform mobile application for tracking fitness activities, nutrition, and health metrics.</p>
+                                <div class="tech-stack" aria-label="Technologies used">
+                                    <span class="tech-badge" data-tooltip="React Native cross-platform framework">
+                                        <i class="fab fa-react" aria-hidden="true"></i> React Native
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="Redux state management">
+                                        <i class="fas fa-code" aria-hidden="true"></i> Redux
+                                    </span>
+                                    <span class="tech-badge" data-tooltip="Firebase backend">
+                                        <i class="fas fa-fire" aria-hidden="true"></i> Firebase
+                                    </span>
+                                </div>
+                                <button class="btn project-details-btn" data-project="healthapp" aria-label="View Health Tracking Mobile App details">
+                                    Project Details <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </article>
                     </div>
-                    <div class="project-card neumorphism">
-                        <div class="project-img">
-                            <img data-src="https://source.unsplash.com/300x200/?app" alt="Task Management App Screenshot" loading="lazy" width="300" height="200">
+                    
+                    <!-- Carousel Navigation -->
+                    <div class="carousel-controls">
+                        <button class="carousel-control prev" aria-label="Previous projects">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+                        <div class="carousel-dots" role="tablist" aria-label="Project slides">
+                            <button class="dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+                            <button class="dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+                            <button class="dot" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+                            <button class="dot" data-slide="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
                         </div>
-                        <div class="project-content">
-                            <h3>Task Management App</h3>
-                            <p>A productivity tool for organizing tasks with features like drag-and-drop, reminders, and team collaboration.</p>
-                            <div class="tech-stack">
-                                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
-                                <span class="tech-badge"><i class="fab fa-node"></i> Express</span>
-                                <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
-                            </div>
-                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                        <button class="carousel-control next" aria-label="Next projects">
+                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        </button>
                     </div>
-                    <div class="project-card neumorphism">
-                        <div class="project-img">
-                            <img data-src="https://source.unsplash.com/300x200/?dashboard" alt="Analytics Dashboard Screenshot" loading="lazy" width="300" height="200">
-                        </div>
-                        <div class="project-content">
-                            <h3>Analytics Dashboard</h3>
-                            <p>An interactive data visualization platform with real-time updates and customizable widgets.</p>
-                            <div class="tech-stack">
-                                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
-                                <span class="tech-badge"><i class="fab fa-js"></i> D3.js</span>
-                                <span class="tech-badge"><i class="fas fa-fire"></i> Firebase</span>
-                            </div>
-                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                </div>
+            </div>
+            
+            <!-- Project Details Modal -->
+            <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <div class="modal-content">
+                    <button class="modal-close" aria-label="Close modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                    <div class="modal-body">
+                        <!-- Modal content will be loaded dynamically -->
                     </div>
                 </div>
             </div>
