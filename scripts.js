@@ -14,6 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
             img.src = introPhoto.getAttribute('src');
         }
 
+        // Handle blog image loading
+        const blogImg = document.querySelector('.blog-img img');
+        if (blogImg) {
+            const img = new Image();
+            img.onload = function() {
+                blogImg.src = this.src;
+                blogImg.classList.add('loaded');
+            };
+            img.src = blogImg.getAttribute('src');
+        }
+
         // Page Loader (No Change)
         const pageLoader = document.querySelector('.page-loader');
         window.addEventListener('load', function() {
