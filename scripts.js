@@ -1,9 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     try {
-        // Debug statement to ensure script loads (No Change)
+        // Debug statement to ensure script loads
         console.log('Portfolio scripts loaded successfully');
 
-        // Handle intro photo loading (No Change)
+        // FIXED: Immediately hide the page loader instead of waiting for window.load
+        const pageLoader = document.querySelector('.page-loader');
+        if (pageLoader) {
+            pageLoader.style.display = 'none';
+            console.log('Page loader hidden immediately');
+            document.body.classList.add('page-loaded');
+        }
+
+        // Handle intro photo loading
         const introPhoto = document.querySelector('.intro-photo');
         if (introPhoto) {
             const img = new Image();
@@ -25,20 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             img.src = blogImg.getAttribute('src');
         }
 
-        // Page Loader (No Change)
-        const pageLoader = document.querySelector('.page-loader');
-        window.addEventListener('load', function() {
-            console.log('Page fully loaded');
-            document.body.classList.add('page-loaded');
-            setTimeout(() => {
-                if (pageLoader) {
-                    pageLoader.style.display = 'none';
-                    console.log('Page loader hidden');
-                }
-            }, 500);
-        });
-
-        // Core UI elements (No Change)
+        // Core UI elements
         const navToggler = document.querySelector('.nav-toggler');
         const navLinks = document.querySelector('.nav-links');
         const navLinksList = document.querySelectorAll('.nav-links a');
@@ -48,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const formStatus = document.getElementById('formStatus');
         const contactForm = document.getElementById('contactForm');
 
-        // Check for saved theme preference (No Change)
+        // Check for saved theme preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             body.classList.add('dark-mode');
             updateDarkModeIcon(true);
-            darkModeToggle.setAttribute('aria-checked', 'true');
+            if (darkModeToggle) darkModeToggle.setAttribute('aria-checked', 'true');
         }
 
         // Mobile Navigation Toggle with ARIA attributes (No Change)

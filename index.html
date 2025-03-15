@@ -1126,19 +1126,21 @@
                 <a href="#" class="logo">
                     <span>AA</span> Abel Arroyo
                 </a>
-                <button type="button" class="nav-toggler" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span></span>
-                </button>
-                <div class="nav-links">
-                    <ul role="menubar">
-                        <li role="none"><a href="#home" role="menuitem">Home</a></li>
-                        <li role="none"><a href="#about" role="menuitem">About</a></li>
-                        <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
-                        <li role="none"><a href="#blog" role="menuitem">Blog</a></li>
-                        <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
-                    </ul>
+                <div class="nav-container">
+                    <div class="nav-links">
+                        <ul role="menubar">
+                            <li role="none"><a href="#home" role="menuitem">Home</a></li>
+                            <li role="none"><a href="#about" role="menuitem">About</a></li>
+                            <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
+                            <li role="none"><a href="#blog" role="menuitem">Blog</a></li>
+                            <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+                        </ul>
+                    </div>
+                    <button class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+                    <button type="button" class="nav-toggler" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span>
+                    </button>
                 </div>
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
             </nav>
         </div>
     </header>
@@ -1618,6 +1620,16 @@
                 navToggler.classList.toggle('active');
                 navLinks.classList.toggle('active');
             });
+        });
+
+        window.addEventListener('load', () => {
+            const pageLoader = document.querySelector('.page-loader');
+            if (pageLoader) {
+                pageLoader.classList.add('fade-out');
+                setTimeout(() => {
+                    pageLoader.style.display = 'none';
+                }, 500); // Match the CSS transition duration
+            }
         });
     </script>
 </body>
