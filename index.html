@@ -12,7 +12,6 @@
     <title>Abel Arroyo | Full Stack Web Developer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Add Font Awesome for better icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
@@ -27,51 +26,117 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            overflow-x: hidden; /* Added to prevent horizontal scrollbar */
         }
 
         header {
             background-color: #4a90e2;
             color: #fff;
-            padding: 20px 0;
+            padding: 1em 0; /* Changed to em for relative sizing */
+        }
+
+        .container {
+            width: 95%; /* Changed from fixed to percentage for responsiveness */
+            max-width: 1200px; /* Kept max-width for larger screens */
+            margin: 0 auto;
+            padding-left: 15px; /* Added consistent padding */
+            padding-right: 15px; /* Added consistent padding */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em; /* Changed to em for relative sizing */
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
         }
 
         .navbar .logo span {
             color: #ff6f61;
         }
 
+        .navbar .nav-links {
+            display: flex;
+            gap: 1.5em; /* Changed to em for relative sizing */
+        }
+
         .navbar .nav-links a {
             color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.5em 0; /* Added padding for better touch area */
+            display: block; /* Make links block for padding to work vertically */
+        }
+
+        .navbar .nav-links a:hover {
+            color: #e55b50;
+        }
+
+        .navbar .nav-toggler {
+            display: none; /* Hidden by default, shown in mobile media query */
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
         }
 
         .hero {
-            padding: 100px 0;
+            padding: 5em 0; /* Changed to em for relative sizing */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             background: linear-gradient(to right, #4a90e2, #ff6f61);
+            position: relative; /* For particles positioning */
+            overflow: hidden; /* To contain particles within hero */
         }
 
+        .hero::before { /* Darken overlay for better text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.1); /* Slightly darker overlay */
+        }
+
+        .hero > * { /* Ensure hero content is above overlay */
+            position: relative;
+            z-index: 1;
+        }
+
+
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5em; /* Changed to em for relative sizing */
+            margin-bottom: 0.5em; /* Changed to em for relative sizing */
+            font-weight: bold;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.1em; /* Changed to em for relative sizing */
+            margin-bottom: 1.5em; /* Changed to em for relative sizing */
+            line-height: 1.6;
+            color: #eee; /* Lighter text for hero section */
         }
 
         .btn {
             background-color: #ff6f61;
             color: #fff;
             border: none;
-            padding: 12px 24px;
+            padding: 0.8em 1.6em; /* Changed to em for relative sizing */
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 0.3em; /* Changed to em for relative sizing */
             transition: background-color 0.3s ease;
-            font-size: 1rem;
+            font-size: 1em; /* Changed to em for relative sizing */
+            text-decoration: none; /* Ensure button styling for <a> tag */
+            display: inline-block; /* Ensure button styling for <a> tag */
         }
 
         .btn:hover {
@@ -79,45 +144,103 @@
         }
 
         .glassmorphism {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15); /* Increased opacity slightly */
             backdrop-filter: blur(10px);
             border-radius: 10px;
-            padding: 20px;
+            padding: 2em; /* Changed to em for relative sizing */
+            margin-top: 2em; /* Added margin for spacing */
         }
 
         .neumorphism {
             background: #e0e5ec;
             border-radius: 10px;
             box-shadow: 7px 7px 15px #a3b1c6, -7px -7px 15px #ffffff;
-            padding: 20px;
+            padding: 2em; /* Changed to em for relative sizing */
+            margin-bottom: 2em; /* Added margin for spacing */
         }
 
         footer {
             background-color: #333;
             color: #fff;
-            padding: 20px 0;
+            padding: 2em 0; /* Changed to em for relative sizing */
             text-align: center;
+            margin-top: 4em; /* Added margin for spacing */
         }
 
-        .footer-links a {
+        .footer-content {
+            display: flex;
+            flex-direction: column; /* Stack footer sections on mobile */
+            align-items: center;
+            padding-bottom: 2em; /* Added padding for spacing */
+        }
+
+        .footer-info, .footer-links {
+            margin-bottom: 2em; /* Spacing between footer sections */
+            text-align: center; /* Center text in footer sections */
+        }
+
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center logo and name */
+            margin-bottom: 1em; /* Spacing below logo */
+        }
+
+        .footer-logo span {
+            color: #ff6f61;
+            font-size: 2em; /* Larger logo text */
+            font-weight: bold;
+            margin-right: 0.2em; /* Spacing between letters */
+        }
+
+        .footer-logo h3 {
+            font-size: 1.5em; /* Larger logo name */
+            font-weight: bold;
+            margin: 0; /* Reset margin */
+        }
+
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5em; /* Spacing between footer links */
+        }
+
+
+        .footer-links a, .social-links a, .social-links-contact a, .contact-details a {
             color: #ff6f61;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
+        .footer-links a:hover, .social-links a:hover, .social-links-contact a:hover, .contact-details a:hover {
             color: #e55b50;
         }
 
-        .social-links a {
-            color: #ff6f61;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+        .social-links, .social-links-contact {
+            display: flex;
+            justify-content: center; /* Center social links */
+            gap: 1em; /* Spacing between social icons */
+            margin-top: 1em; /* Spacing above social links */
         }
 
-        .social-links a:hover {
-            color: #e55b50;
+
+        .social-links a i, .social-links-contact a i {
+            font-size: 1.5em; /* Larger social icons */
         }
+
+
+        .footer-bottom {
+            padding-top: 2em; /* Spacing above bottom footer */
+            border-top: 1px solid #444; /* Separator line */
+            text-align: center; /* Center bottom footer text */
+        }
+
 
         /* Add smooth scrolling for better UX */
         html {
@@ -125,15 +248,35 @@
         }
 
         /* Enhance form input styles */
+        .input-with-icon {
+            position: relative; /* For icon positioning */
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 1em; /* Icon position from left */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777; /* Icon color */
+        }
+
         .input-with-icon input,
         .input-with-icon textarea {
             width: 100%;
-            padding: 10px;
+            padding: 0.8em; /* Consistent padding */
+            padding-left: 2.5em; /* Added padding for icon space */
             border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            border-radius: 0.3em; /* Consistent border radius */
+            margin-bottom: 1em;
             transition: border-color 0.3s ease;
+            font-size: 1em; /* Consistent font size */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
+
+        .input-with-icon textarea {
+            min-height: 150px; /* Minimum height for textarea */
+        }
+
 
         .input-with-icon input:focus,
         .input-with-icon textarea:focus {
@@ -143,18 +286,26 @@
 
         /* Add hover effect to project cards */
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-0.5em); /* Slight lift on hover */
             transition: transform 0.3s ease;
         }
 
         /* Add animations to particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allow clicks through particles */
+        }
         .particles .particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #fff;
+            width: 0.5em; /* Smaller particles */
+            height: 0.5em; /* Smaller particles */
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
             border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
+            animation: float 6s infinite ease-in-out, moveHorizontal 20s infinite alternate; /* Adjusted animation duration and added horizontal movement */
         }
 
         @keyframes float {
@@ -162,19 +313,31 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-1em); /* Reduced float distance */
             }
             100% {
                 transform: translateY(0);
             }
         }
 
+        @keyframes moveHorizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(10%); } /* Slight horizontal movement */
+        }
+
+
         /* Optimize images for faster loading */
         img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
             display: block;
-            max-width: 100%;
+        }
+
+        .intro-photo {
+            border-radius: 50%;
+            object-fit: cover;
+            max-width: 150px; /* Limit intro photo size */
+            height: auto; /* Maintain aspect ratio */
         }
 
         /* Lazy load images */
@@ -187,16 +350,24 @@
             opacity: 1;
         }
 
-        /* Minimize CSS and JavaScript */
-        /* Use a tool like cssnano and terser for minification */
-
-        /* Use webp format for images */
-        /* Example: <img src="image.webp" alt="..."> */
 
         /* Responsive styles for mobile */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px; /* Base font size for mobile */
+            }
             header {
-                padding: 10px 0;
+                padding: 0.75em 0; /* Adjusted padding */
+            }
+
+            .container {
+                width: 90%; /* Slightly narrower container on mobile */
+                padding-left: 10px; /* Adjusted padding */
+                padding-right: 10px; /* Adjusted padding */
+            }
+
+            .navbar .logo {
+                font-size: 1.3em; /* Adjusted logo size */
             }
 
             .navbar .nav-links {
@@ -204,13 +375,14 @@
                 flex-direction: column;
                 background-color: #4a90e2;
                 position: absolute;
-                top: 60px;
+                top: 100%; /* Position nav links below header */
                 right: 0;
-                width: 100%;
+                left: 0; /* Full width nav links */
                 text-align: center;
                 transition: max-height 0.3s ease-in-out;
                 max-height: 0;
                 overflow: hidden;
+                z-index: 10; /* Ensure nav links are above other content */
             }
 
             .navbar .nav-links.active {
@@ -218,47 +390,92 @@
                 max-height: 500px; /* Adjust as needed */
             }
 
+            .navbar .nav-links li {
+                margin: 0; /* Reset list item margins */
+            }
+
+
+            .navbar .nav-links a {
+                padding: 1em; /* Increased padding for mobile nav links */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator for nav links */
+            }
+
+            .navbar .nav-links a:last-child {
+                border-bottom: none; /* Remove separator from last link */
+            }
+
+
             .navbar .nav-toggler {
                 display: block;
                 cursor: pointer;
+                position: relative; /* For centering spans */
+                width: 30px; /* Adjust as needed */
+                height: 30px; /* Adjust as needed */
+                margin-left: auto; /* Push to the right */
             }
 
             .navbar .nav-toggler span {
                 display: block;
-                width: 25px;
-                height: 3px;
+                position: absolute; /* For positioning lines */
+                left: 5px; /* Spacing from left edge */
+                right: 5px; /* Spacing from right edge */
+                height: 2px;
                 background-color: #fff;
-                margin: 5px 0;
+                top: 50%;
+                transform: translateY(-50%); /* Center vertically */
                 transition: all 0.3s ease;
             }
 
-            .navbar .nav-toggler.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
+            .navbar .nav-toggler span::before,
+            .navbar .nav-toggler span::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background-color: #fff;
+                transition: all 0.3s ease;
             }
 
-            .navbar .nav-toggler.active span:nth-child(2) {
-                opacity: 0;
+            .navbar .nav-toggler span::before {
+                top: -8px; /* Position top line */
             }
 
-            .navbar .nav-toggler.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
+            .navbar .nav-toggler span::after {
+                bottom: -8px; /* Position bottom line */
             }
+
+
+            .navbar .nav-toggler.active span {
+                background-color: transparent; /* Hide middle line when active */
+            }
+
+            .navbar .nav-toggler.active span::before {
+                top: 0;
+                transform: rotate(45deg); /* Rotate top line to 45 degrees */
+            }
+
+            .navbar .nav-toggler.active span::after {
+                bottom: 0;
+                transform: rotate(-45deg); /* Rotate bottom line to -45 degrees */
+            }
+
 
             .hero {
-                padding: 50px 0;
+                padding: 3em 0; /* Adjusted padding */
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2em; /* Adjusted font size */
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1em; /* Adjusted font size */
             }
 
             .btn {
-                padding: 8px 16px;
-                font-size: 0.9rem;
+                padding: 0.7em 1.4em; /* Adjusted padding */
+                font-size: 0.9em; /* Adjusted font size */
             }
 
             .introduction .intro-content {
@@ -268,7 +485,8 @@
             }
 
             .introduction .intro-photo {
-                margin-bottom: 20px;
+                margin-bottom: 1.5em; /* Adjusted margin */
+                max-width: 120px; /* Smaller intro photo on mobile */
             }
 
             .about-content {
@@ -279,11 +497,17 @@
 
             .skills-container {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch; /* Stretch skills to full width */
             }
 
-            .project-card {
-                margin-bottom: 20px;
+            .skill-item {
+                margin-bottom: 1.5em; /* Adjusted margin */
+                text-align: center; /* Center skill items on mobile */
+            }
+
+            .skill-icon {
+                margin-right: 0; /* Remove right margin for icon */
+                margin-bottom: 0.5em; /* Add bottom margin for icon */
             }
 
             .testimonials-grid {
@@ -291,112 +515,562 @@
                 align-items: center;
             }
 
+            .testimonial-card {
+                margin-bottom: 2em; /* Adjusted margin */
+                padding: 1.5em; /* Adjusted padding */
+            }
+
+
             .blog-posts {
                 flex-direction: column;
                 align-items: center;
             }
 
+            .blog-post {
+                margin-bottom: 2em; /* Adjusted margin */
+                padding: 1.5em; /* Adjusted padding */
+            }
+
+
             .contact-grid {
                 flex-direction: column;
-                align-items: center;
             }
 
             .contact-form,
             .contact-info {
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 2em; /* Adjusted margin */
+            }
+
+            .footer-content {
+                flex-direction: column; /* Stack footer sections */
+                text-align: center; /* Center footer text */
+            }
+
+            .footer-info, .footer-links, .footer-bottom {
+                width: 100%; /* Full width footer sections */
+                padding-left: 10px; /* Consistent padding */
+                padding-right: 10px; /* Consistent padding */
+                box-sizing: border-box; /* Include padding in width */
             }
 
             .footer-links {
-                flex-direction: column;
-                align-items: center;
+                align-items: center; /* Center footer links on mobile */
+            }
+
+
+            .footer-links ul {
+                text-align: center; /* Center links in list */
             }
 
             .footer-section {
-                margin-bottom: 20px;
+                margin-bottom: 2em; /* Spacing between footer sections */
             }
+
+            .social-links {
+                margin-top: 1em; /* Spacing above social links */
+                justify-content: center; /* Center social icons */
+            }
+
+            .footer-bottom {
+                padding-top: 1.5em; /* Adjusted padding */
+            }
+
+
         }
 
-        /* Responsive styles for landscape mode */
+        /* Responsive styles for landscape mode - minor adjustments for better landscape view on phones */
         @media (orientation: landscape) and (max-width: 768px) {
             .hero {
-                padding: 30px 0;
+                padding: 2em 0; /* Less padding in landscape */
             }
 
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 1.8em; /* Slightly smaller font in landscape */
             }
 
             .hero p {
-                font-size: 0.9rem;
+                font-size: 0.95em; /* Slightly smaller font in landscape */
             }
 
             .btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+                padding: 0.6em 1.2em; /* Slightly smaller button in landscape */
+                font-size: 0.85em; /* Slightly smaller font in landscape */
             }
 
             .introduction .intro-content {
-                flex-direction: row;
-                align-items: flex-start;
-                text-align: left;
+                flex-direction: row; /* Keep row layout in landscape */
+                align-items: center; /* Center items vertically */
+                text-align: left; /* Left align text */
             }
 
             .introduction .intro-photo {
-                margin-right: 20px;
-                margin-bottom: 0;
+                margin-right: 1.5em; /* Spacing to the right of photo */
+                margin-bottom: 0; /* Remove bottom margin */
+                max-width: 100px; /* Slightly smaller photo in landscape */
             }
 
             .about-content {
-                flex-direction: row;
-                align-items: flex-start;
-                text-align: left;
+                flex-direction: row; /* Keep row layout in landscape */
+                align-items: flex-start; /* Align items to the start */
+                text-align: left; /* Left align text */
             }
 
             .skills-container {
-                flex-direction: row;
-                align-items: flex-start;
+                flex-direction: row; /* Keep row layout for skills in landscape */
+                align-items: flex-start; /* Align skill items to the start */
+                justify-content: flex-start; /* Align skills to the start */
+                flex-wrap: wrap; /* Allow skills to wrap */
             }
 
-            .project-card {
-                margin-bottom: 15px;
+            .skill-item {
+                width: calc(50% - 1em); /* Two skills per row in landscape */
+                margin-right: 1em; /* Spacing between skill items */
+                margin-bottom: 1em; /* Spacing below skill items */
+                text-align: left; /* Left align skill text */
+            }
+
+            .skill-icon {
+                margin-right: 0.5em; /* Spacing to the right of icon */
+                margin-bottom: 0; /* Remove bottom margin for icon */
             }
 
             .testimonials-grid {
-                flex-direction: row;
-                align-items: flex-start;
+                flex-direction: row; /* Keep row layout for testimonials in landscape */
+                align-items: stretch; /* Stretch testimonials vertically */
             }
+
+            .testimonial-card {
+                margin-bottom: 0; /* Remove bottom margin */
+                margin-right: 1.5em; /* Spacing to the right of testimonial */
+            }
+
+            .testimonial-card:last-child {
+                margin-right: 0; /* Remove right margin from last testimonial */
+            }
+
 
             .blog-posts {
-                flex-direction: row;
-                align-items: flex-start;
+                flex-direction: row; /* Keep row layout for blog posts in landscape */
+                align-items: flex-start; /* Align blog posts to the start */
             }
 
+            .blog-post {
+                width: calc(50% - 1em); /* Two blog posts per row in landscape */
+                margin-right: 1em; /* Spacing to the right of blog post */
+                margin-bottom: 1.5em; /* Spacing below blog posts */
+            }
+
+            .blog-post:last-child,
+            .blog-post:nth-child(odd):last-child { /* Target last odd-numbered post in case of odd number of posts */
+                margin-right: 0; /* Remove right margin from last blog post in row */
+            }
+
+
             .contact-grid {
-                flex-direction: row;
-                align-items: flex-start;
+                flex-direction: row; /* Keep row layout for contact in landscape */
+                align-items: flex-start; /* Align contact sections to the start */
             }
 
             .contact-form,
             .contact-info {
-                width: 48%;
-                margin-bottom: 15px;
+                width: 48%; /* Two columns for contact form and info */
+                margin-bottom: 0; /* Remove bottom margin */
+                margin-right: 2%; /* Spacing between contact sections */
+            }
+
+            .contact-info {
+                margin-right: 0; /* Remove right margin from contact info */
+            }
+
+
+            .footer-content {
+                flex-direction: row; /* Keep row layout for footer in landscape */
+                align-items: flex-start; /* Align footer sections to the start */
+                justify-content: space-around; /* Distribute footer sections evenly */
+            }
+
+            .footer-info, .footer-links {
+                margin-bottom: 0; /* Remove bottom margin */
+                text-align: left; /* Left align text in footer sections */
+                width: auto; /* Auto width for footer sections */
+                margin-right: 2em; /* Spacing between footer sections */
             }
 
             .footer-links {
-                flex-direction: row;
-                align-items: flex-start;
+                align-items: flex-start; /* Align footer links to the start */
             }
 
+            .footer-links ul {
+                text-align: left; /* Left align links in list */
+            }
+
+
             .footer-section {
-                margin-bottom: 15px;
+                margin-bottom: 0; /* Remove bottom margin */
             }
         }
+
 
         .intro-photo {
             border-radius: 50%;
             object-fit: cover;
         }
+
+        /* Page Loader Styles - No changes needed as they are fine */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* High z-index to be on top */
+            transition: opacity 0.5s;
+        }
+
+        .page-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            display: flex;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #4a90e2;
+            margin: 0 5px;
+            animation: loader-animation 1.2s infinite ease-in-out;
+        }
+
+        .circle:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .circle:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes loader-animation {
+            0%, 80%, 100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .loader-text {
+            margin-left: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .loader-dots {
+            animation: loader-dots-animation 1.2s infinite steps(3, end);
+        }
+
+        @keyframes loader-dots-animation {
+            0%, 80%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+
+        /* Scroll-to-Top Button Styles - Adjusted for potential blurring issue */
+        .scroll-to-top-btn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.5em;
+            line-height: 1;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 999; /* Ensure it's above other content */
+            opacity: 0.8; /* Slightly transparent */
+            transition: opacity 0.3s, background-color 0.3s; /* Smooth transitions */
+        }
+
+        .scroll-to-top-btn:hover {
+            background-color: #e55b50;
+            opacity: 1;
+        }
+
+        .scroll-to-top-btn::before { /* Up arrow using pseudo-element - cleaner than ↑ character */
+            content: '\2191'; /* Unicode up arrow character */
+            display: block;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+
+        /* Skip Link Styles - No changes needed for functionality */
+        .skip-link {
+            position: absolute;
+            top: -40px; /* Initially off-screen */
+            left: 0;
+            background: #4a90e2;
+            color: white;
+            padding: 0.5em 1em;
+            z-index: 1000; /* Ensure it's on top */
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0; /* Bring into view when focused */
+        }
+
+
+        /* Utility Classes and Minor Adjustments */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3em; /* Increased margin for section title */
+        }
+
+        .section-title h2 {
+            font-size: 2em; /* Larger section titles */
+            font-weight: bold;
+            margin-bottom: 0.5em; /* Spacing below title */
+            color: #333; /* Darker title color */
+        }
+
+        .section-title p {
+            color: #777; /* Slightly lighter subtitle color */
+            font-size: 1.1em; /* Slightly larger subtitle font */
+            line-height: 1.5; /* Improved subtitle line height */
+        }
+
+        .intro-text h2 {
+            font-size: 1.8em; /* Adjusted intro title size */
+            margin-bottom: 0.5em; /* Spacing below intro title */
+        }
+
+        .intro-text p {
+            line-height: 1.7; /* Improved intro text line height */
+            color: #555; /* Slightly darker intro text color */
+        }
+
+        .about-text h3, .skills h3, .contact-info h3, .blog-post h3 {
+            font-size: 1.6em; /* Adjusted heading sizes in sections */
+            margin-bottom: 0.8em; /* Spacing below section headings */
+            color: #333; /* Darker section heading color */
+        }
+
+        .about-text p, .skills-container, .project-content p, .testimonial-card p, .blog-post p, .contact-info p, .contact-details {
+            line-height: 1.6; /* Consistent line height for text blocks */
+            color: #666; /* Slightly darker text color for content */
+        }
+
+        .skill-item h4 {
+            font-size: 1.1em; /* Adjusted skill name size */
+            margin-bottom: 0.3em; /* Spacing below skill name */
+            color: #444; /* Darker skill name color */
+        }
+
+        .progress-bar {
+            background-color: #ddd; /* Light grey progress bar background */
+            border-radius: 0.3em; /* Rounded progress bar */
+            height: 0.6em; /* Reduced progress bar height */
+            overflow: hidden; /* Clip progress within bounds */
+        }
+
+        .progress {
+            background-color: #4a90e2; /* Primary color for progress fill */
+            height: 100%;
+            width: 0%; /* Width set dynamically via inline style */
+        }
+
+        .project-card {
+            background: #fff; /* White project card background */
+            border-radius: 10px;
+            overflow: hidden; /* Clip content within card bounds */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effect */
+            display: flex; /* Flex layout for project card */
+            flex-direction: column; /* Stack image and content vertically */
+            margin-bottom: 1.5em; /* Spacing below project cards */
+        }
+
+        .project-card:hover {
+            transform: translateY(-0.5em); /* Lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+        }
+
+        .project-img {
+            overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+        }
+
+        .project-content {
+            padding: 1.5em; /* Padding inside project content area */
+            display: flex; /* Flex layout for project content */
+            flex-direction: column; /* Stack project content vertically */
+        }
+
+        .project-content h3 {
+            font-size: 1.3em; /* Adjusted project title size */
+            margin-bottom: 0.5em; /* Spacing below project title */
+            color: #333; /* Darker project title color */
+        }
+
+        .project-content p {
+            margin-bottom: 1em; /* Spacing below project description */
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap; /* Allow tech badges to wrap */
+            gap: 0.5em; /* Spacing between tech badges */
+            margin-bottom: 1em; /* Spacing below tech stack */
+        }
+
+        .tech-badge {
+            background-color: #eef0f2; /* Light grey tech badge background */
+            color: #555; /* Tech badge text color */
+            padding: 0.4em 0.7em; /* Padding inside tech badge */
+            border-radius: 0.3em; /* Rounded tech badges */
+            font-size: 0.85em; /* Smaller font size for tech badges */
+            display: inline-flex; /* Use inline-flex to align icon and text */
+            align-items: center; /* Vertically align icon and text */
+            gap: 0.3em; /* Spacing between icon and text in badge */
+        }
+
+        .tech-badge i {
+            font-size: 0.9em; /* Slightly smaller icon in badge */
+        }
+
+        .testimonial-card {
+            background: #fff; /* White testimonial card background */
+            border-radius: 10px;
+            padding: 2em; /* Padding inside testimonial card */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
+            margin-bottom: 1.5em; /* Spacing below testimonial cards */
+        }
+
+        .testimonial-card p {
+            font-style: italic; /* Italic testimonial text */
+            margin-bottom: 1em; /* Spacing below testimonial quote */
+        }
+
+        .testimonial-card h4 {
+            font-weight: bold; /* Bold testimonial author name */
+            margin-bottom: 0.3em; /* Spacing below author name */
+            color: #333; /* Darker author name color */
+        }
+
+        .testimonial-card p:last-of-type { /* Style for the role/position under author name */
+            font-size: 0.95em; /* Slightly smaller font size for role */
+            color: #777; /* Lighter color for role */
+            margin-bottom: 0; /* No margin below role */
+        }
+
+        .blog-post {
+            background: #fff; /* White blog post background */
+            border-radius: 10px;
+            padding: 2em; /* Padding inside blog post */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
+            margin-bottom: 1.5em; /* Spacing below blog posts */
+        }
+
+        .blog-post h3 {
+            margin-bottom: 0.7em; /* Spacing below blog post title */
+        }
+
+        .blog-post p {
+            margin-bottom: 1.2em; /* Spacing below blog post excerpt */
+        }
+
+        .contact-info .contact-details {
+            margin-top: 1.5em; /* Spacing above contact details */
+        }
+
+        .contact-info .contact-item {
+            display: flex; /* Flex layout for contact item */
+            align-items: center; /* Vertically align icon and text */
+            margin-bottom: 1em; /* Spacing below contact items */
+        }
+
+        .contact-info .contact-item:last-child {
+            margin-bottom: 0; /* No margin below last contact item */
+        }
+
+        .contact-info .contact-icon {
+            margin-right: 1em; /* Spacing to the right of contact icon */
+            color: #4a90e2; /* Primary color for contact icons */
+            font-size: 1.2em; /* Larger contact icons */
+            width: 25px; /* Fixed width for icons to align text */
+            text-align: center; /* Center icons in fixed width */
+        }
+
+        .contact-info .contact-text h4 {
+            font-weight: bold; /* Bold contact detail heading */
+            margin-bottom: 0.2em; /* Spacing below detail heading */
+            color: #333; /* Darker detail heading color */
+        }
+
+        .contact-info .contact-text p {
+            margin-bottom: 0; /* No margin below detail text */
+        }
+
+        .footer-section h4 {
+            font-size: 1.2em; /* Adjusted footer section heading size */
+            font-weight: bold; /* Bold footer section headings */
+            margin-bottom: 0.8em; /* Spacing below footer section headings */
+            color: #eee; /* Lighter footer heading color */
+        }
+
+        .footer-section ul {
+            list-style: none; /* Remove list bullets */
+            padding: 0; /* Reset padding */
+            margin: 0; /* Reset margin */
+        }
+
+        .footer-section li {
+            margin-bottom: 0.6em; /* Spacing below footer list items */
+        }
+
+        .footer-section li:last-child {
+            margin-bottom: 0; /* No margin below last footer list item */
+        }
+
+        .footer-contact li {
+            display: flex; /* Flex layout for footer contact items */
+            align-items: flex-start; /* Align items to the start */
+            margin-bottom: 0.8em; /* Spacing below footer contact items */
+        }
+
+        .footer-contact li:last-child {
+            margin-bottom: 0; /* No margin below last footer contact item */
+        }
+
+        .footer-contact li i {
+            margin-right: 0.8em; /* Spacing to the right of footer contact icons */
+            color: #ff6f61; /* Accent color for footer contact icons */
+            font-size: 1em; /* Adjusted footer contact icon size */
+            width: 20px; /* Fixed width for icons to align text */
+            text-align: center; /* Center icons in fixed width */
+        }
+
+
     </style>
 </head>
 <body>
@@ -409,10 +1083,10 @@
         </div>
         <div class="loader-text">Loading<span class="loader-dots">...</span></div>
     </div>
-    
+
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <header>
         <div class="container">
             <nav class="navbar" aria-label="Main navigation">
@@ -451,16 +1125,13 @@
                 <p>Full Stack Web Developer | UI/UX Enthusiast</p>
                 <a href="#projects" class="btn">View My Work</a>
             </div>
-            <div class="three-d-element">
-                <!-- Add your 3D element here using Three.js or any other library -->
-            </div>
         </section>
 
         <!-- Introduction Section -->
         <section id="introduction" class="introduction" style="margin-top: 80px;">
             <div class="container">
                 <div class="intro-content">
-                    <img src="images/170153954.jpeg" alt="Professional headshot of Abel Arroyo" class="intro-photo animate__animated animate__fadeIn" width="150" height="150">
+                    <img src="images/170153954.jpeg" alt="Professional headshot of Abel Arroyo" class="intro-photo animate__animated animate__fadeIn" width="150" height="150" loading="lazy">
                     <div class="intro-text">
                         <h2>Hi, I'm Abel Arroyo</h2>
                         <p>I'm a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
@@ -495,7 +1166,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-icon">
                                     <i class="fab fa-js"></i>
@@ -507,7 +1178,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-icon">
                                     <i class="fab fa-react"></i>
@@ -519,7 +1190,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-icon">
                                     <i class="fab fa-node-js"></i>
@@ -531,7 +1202,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="skill-item">
                                 <div class="skill-icon">
                                     <i class="fas fa-database"></i>
@@ -747,7 +1418,7 @@
                 </div>
                 <p>Building exceptional web experiences that combine aesthetics with functionality.</p>
             </div>
-            
+
             <div class="footer-links">
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -759,7 +1430,7 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul>
@@ -770,7 +1441,7 @@
                         <li>Database Design</li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul class="footer-contact">
@@ -781,7 +1452,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>© 2025 Abel Arroyo. All Rights Reserved.</p>
             <div class="social-links">
