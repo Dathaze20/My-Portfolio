@@ -1084,6 +1084,27 @@
 
 
     </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Abel Arroyo",
+            "url": "https://dathaze20.github.io/My-Portfolio/",
+            "image": "images/170153954.jpeg",
+            "jobTitle": "Full Stack Web Developer",
+            "sameAs": [
+                "https://github.com/Dathaze20",
+                "https://medium.com/@dathaze20"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Brooklyn",
+                "addressRegion": "NY"
+            },
+            "description": "Full Stack Web Developer specializing in modern web applications with React, Node.js, and more",
+            "skills": "HTML, CSS, JavaScript, React, Node.js, MongoDB, SQL, Git, GitHub, Python, Responsive Design, Bootstrap, AWS"
+        }
+    </script>
 </head>
 <body>
     <!-- Page Loader -->
@@ -1117,6 +1138,7 @@
                         <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                     </ul>
                 </div>
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
             </nav>
         </div>
     </header>
@@ -1302,6 +1324,12 @@
                 <div class="section-title">
                     <h2>My Projects</h2>
                     <p>Check out some of my recent work</p>
+                </div>
+                <div class="project-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
                 </div>
                 <div class="projects-carousel">
                     <div class="project-card neumorphism">

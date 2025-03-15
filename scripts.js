@@ -438,6 +438,85 @@ document.addEventListener('DOMContentLoaded', function() {
         if (footerElement) footerElement.setAttribute('role', 'contentinfo');
         if (headerElement) headerElement.setAttribute('role', 'banner');
 
+        // Project filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        // Add data-category attributes to project cards for demo
+        projectCards.forEach((card, index) => {
+            // For demo purposes, assign categories to existing projects
+            if (index === 0) {
+                card.setAttribute('data-category', 'fullstack');
+            } else if (index === 1) {
+                card.setAttribute('data-category', 'backend');
+            } else if (index === 2) {
+                card.setAttribute('data-category', 'frontend');
+            }
+        });
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Get filter value
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Dark mode functionality
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            // Update icon to sun for dark mode
+            const darkModeIcon = darkModeToggle.querySelector('i');
+            if (darkModeIcon) {
+                darkModeIcon.className = 'fas fa-sun';
+            }
+        }
+        
+        // Add event listener to dark mode toggle
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                
+                // Update icon based on mode
+                const darkModeIcon = this.querySelector('i');
+                if (darkModeIcon) {
+                    if (body.classList.contains('dark-mode')) {
+                        darkModeIcon.className = 'fas fa-sun';
+                        localStorage.setItem('darkMode', 'enabled');
+                    } else {
+                        darkModeIcon.className = 'fas fa-moon';
+                        localStorage.setItem('darkMode', 'disabled');
+                    }
+                }
+            });
+        }
+        
     } catch (error) {
         console.error('Error loading portfolio scripts:', error);
     }
