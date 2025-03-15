@@ -44,19 +44,34 @@
         }
 
         .hero {
-            background: linear-gradient(to right, #4a90e2, #ff6f61);
-            color: #fff;
             padding: 100px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to right, #4a90e2, #ff6f61);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
 
         .btn {
             background-color: #ff6f61;
             color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -132,23 +147,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Enhance dark mode toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4a90e2;
-            color: #fff;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            background-color: #357ab8;
-        }
-
         /* Add animations to particles */
         .particles .particle {
             position: absolute;
@@ -210,11 +208,14 @@
                 right: 0;
                 width: 100%;
                 text-align: center;
+                transition: max-height 0.3s ease-in-out;
+                max-height: 0;
+                overflow: hidden;
             }
 
-            .navbar .nav-links a {
-                padding: 10px;
-                border-bottom: 1px solid #fff;
+            .navbar .nav-links.active {
+                display: flex;
+                max-height: 500px; /* Adjust as needed */
             }
 
             .navbar .nav-toggler {
@@ -316,125 +317,85 @@
             }
         }
 
-        /* Responsive styles for mobile (Android and iOS) */
-        @media (max-width: 768px) {
-            header {
-                padding: 10px 0;
-            }
-
-            .navbar .nav-links {
-                display: none;
-                flex-direction: column;
-                background-color: #4a90e2;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            .navbar .nav-links a {
-                padding: 10px;
-                border-bottom: 1px solid #fff;
-            }
-
-            .navbar .nav-toggler {
-                display: block;
-                cursor: pointer;
-            }
-
-            .navbar .nav-toggler span {
-                display: block;
-                width: 25px;
-                height: 3px;
-                background-color: #fff;
-                margin: 5px 0;
-                transition: all 0.3s ease;
-            }
-
-            .navbar .nav-toggler.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .navbar .nav-toggler.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .navbar .nav-toggler.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
+        /* Responsive styles for landscape mode */
+        @media (orientation: landscape) and (max-width: 768px) {
             .hero {
-                padding: 50px 0;
+                padding: 30px 0;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .hero p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                padding: 8px 16px;
                 font-size: 0.9rem;
             }
 
+            .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
             .introduction .intro-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
             }
 
             .introduction .intro-photo {
-                margin-bottom: 20px;
+                margin-right: 20px;
+                margin-bottom: 0;
             }
 
             .about-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
             }
 
             .skills-container {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                align-items: flex-start;
             }
 
             .project-card {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
 
             .testimonials-grid {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                align-items: flex-start;
             }
 
             .blog-posts {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                align-items: flex-start;
             }
 
             .contact-grid {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                align-items: flex-start;
             }
 
             .contact-form,
             .contact-info {
-                width: 100%;
-                margin-bottom: 20px;
+                width: 48%;
+                margin-bottom: 15px;
             }
 
             .footer-links {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                align-items: flex-start;
             }
 
             .footer-section {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
+        }
+
+        .intro-photo {
+            border-radius: 50%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -452,9 +413,6 @@
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
-    <div class="dark-mode-toggle" aria-label="Toggle dark mode" role="switch" aria-checked="true" tabindex="0">
-        <i class="fas fa-moon"></i>
-    </div>
     <header>
         <div class="container">
             <nav class="navbar" aria-label="Main navigation">
@@ -499,10 +457,10 @@
         </section>
 
         <!-- Introduction Section -->
-        <section id="introduction" class="introduction">
+        <section id="introduction" class="introduction" style="margin-top: 80px;">
             <div class="container">
                 <div class="intro-content">
-                    <img src="images/profile.jpg" alt="Abel Arroyo - Professional headshot" class="intro-photo" width="150" height="150" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
+                    <img src="images/170153954.jpeg" alt="Professional headshot of Abel Arroyo" class="intro-photo animate__animated animate__fadeIn" width="150" height="150">
                     <div class="intro-text">
                         <h2>Hi, I'm Abel Arroyo</h2>
                         <p>I'm a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
@@ -853,7 +811,7 @@
             // Lazy load images
             const lazyImages = document.querySelectorAll('img[loading="lazy"]');
             lazyImages.forEach(img => {
-                img.src = img.dataset.src;
+                img.src = img.dataset.src || img.src;
             });
 
             // Smooth scrolling
@@ -864,15 +822,6 @@
                         behavior: 'smooth'
                     });
                 });
-            });
-
-            // Dark mode toggle
-            const darkModeToggle = document.querySelector('.dark-mode-toggle');
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                darkModeToggle.setAttribute('aria-checked', isDarkMode);
-                darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
             });
 
             // Scroll-to-top button
@@ -886,6 +835,14 @@
             });
             scrollToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            const navToggler = document.querySelector('.nav-toggler');
+            const navLinks = document.querySelector('.nav-links');
+
+            navToggler.addEventListener('click', function() {
+                navToggler.classList.toggle('active');
+                navLinks.classList.toggle('active');
             });
         });
     </script>

@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Debug statement to ensure script loads
         console.log('Portfolio scripts loaded successfully');
         
+        // Handle intro photo loading
+        const introPhoto = document.querySelector('.intro-photo');
+        if (introPhoto) {
+            // Force image to load first
+            const img = new Image();
+            img.onload = function() {
+                introPhoto.src = this.src;
+                introPhoto.style.opacity = '1';
+            };
+            img.src = introPhoto.getAttribute('src');
+        }
+
         // Page Loader
         const pageLoader = document.querySelector('.page-loader');
         
