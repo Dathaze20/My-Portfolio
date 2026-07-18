@@ -3,1087 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Abel Arroyo - Full Stack Web Developer specializing in modern web applications with React, Node.js, and more">
-    <meta name="keywords" content="web developer, full stack, React, Node.js, JavaScript, portfolio">
-    
+    <meta name="description" content="Abel Arroyo — full-stack developer building AI-integrated web apps, native Android tools, and cross-platform products with React, TypeScript, Python, and the Gemini API.">
+    <meta name="keywords" content="web developer, full stack, React, TypeScript, Python, Kivy, Android, Gemini API, AI apps, portfolio">
+
     <!-- OpenGraph Meta Tags -->
-    <meta property="og:title" content="Abel Arroyo | Full Stack Web Developer">
-    <meta property="og:description" content="Full Stack Web Developer specializing in modern web applications">
+    <meta property="og:title" content="Abel Arroyo | Full-Stack Developer & AI Product Builder">
+    <meta property="og:description" content="Full-stack developer building AI-integrated web apps and native Android tools — shipped, tested, and CI/CD'd end to end.">
     <meta property="og:image" content="images/image.png">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="315">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com">
-    
+    <meta property="og:url" content="https://dathaze20.github.io/My-Portfolio/">
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Abel Arroyo | Full Stack Web Developer">
-    <meta name="twitter:description" content="Full Stack Web Developer specializing in modern web applications">
+    <meta name="twitter:title" content="Abel Arroyo | Full-Stack Developer & AI Product Builder">
+    <meta name="twitter:description" content="Full-stack developer building AI-integrated web apps and native Android tools — shipped, tested, and CI/CD'd end to end.">
     <meta name="twitter:image" content="images/image.png">
-    
-    <title>Abel Arroyo | Full Stack Web Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <title>Abel Arroyo | Full-Stack Developer &amp; AI Product Builder</title>
+
+    <link rel="icon" href="images/170153954.jpeg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="scripts.js" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style">
-    <style>
-        body {
-            background-color: #f0f4f8;
-            color: #333;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Added to prevent horizontal scrollbar */
-        }
 
-        header {
-            background-color: #4a90e2;
-            color: #fff;
-            padding: 1em 0; /* Changed to em for relative sizing */
-        }
-
-        .container {
-            width: 95%; /* Changed from fixed to percentage for responsiveness */
-            max-width: 1200px; /* Kept max-width for larger screens */
-            margin: 0 auto;
-            padding-left: 15px; /* Added consistent padding */
-            padding-right: 15px; /* Added consistent padding */
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo {
-            font-size: 1.5em; /* Changed to em for relative sizing */
-            font-weight: bold;
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .navbar .logo span {
-            color: #ff6f61;
-        }
-
-        .navbar .nav-links {
-            display: flex;
-            gap: 1.5em; /* Changed to em for relative sizing */
-        }
-
-        .navbar .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 0.5em 0; /* Added padding for better touch area */
-            display: block; /* Make links block for padding to work vertically */
-        }
-
-        .navbar .nav-links a:hover {
-            color: #e55b50;
-        }
-
-        .navbar .nav-toggler {
-            display: none; /* Hidden by default, shown in mobile media query */
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-        }
-
-        .hero {
-            padding: 5em 0; /* Changed to em for relative sizing */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(to right, #4a90e2, #ff6f61);
-            position: relative; /* For particles positioning */
-            overflow: hidden; /* To contain particles within hero */
-        }
-
-        .hero::before { /* Darken overlay for better text readability */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.1); /* Slightly darker overlay */
-        }
-
-        .hero > * { /* Ensure hero content is above overlay */
-            position: relative;
-            z-index: 1;
-        }
-
-
-        .hero h1 {
-            font-size: 2.5em; /* Changed to em for relative sizing */
-            margin-bottom: 0.5em; /* Changed to em for relative sizing */
-            font-weight: bold;
-        }
-
-        .hero p {
-            font-size: 1.1em; /* Changed to em for relative sizing */
-            margin-bottom: 1.5em; /* Changed to em for relative sizing */
-            line-height: 1.6;
-            color: #eee; /* Lighter text for hero section */
-        }
-
-        .btn {
-            background-color: #ff6f61;
-            color: #fff;
-            border: none;
-            padding: 0.8em 1.6em; /* Changed to em for relative sizing */
-            cursor: pointer;
-            border-radius: 0.3em; /* Changed to em for relative sizing */
-            transition: background-color 0.3s ease;
-            font-size: 1em; /* Changed to em for relative sizing */
-            text-decoration: none; /* Ensure button styling for <a> tag */
-            display: inline-block; /* Ensure button styling for <a> tag */
-        }
-
-        .btn:hover {
-            background-color: #e55b50;
-        }
-
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.15); /* Increased opacity slightly */
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 2em; /* Changed to em for relative sizing */
-            margin-top: 2em; /* Added margin for spacing */
-        }
-
-        .neumorphism {
-            background: #e0e5ec;
-            border-radius: 10px;
-            box-shadow: 7px 7px 15px #a3b1c6, -7px -7px 15px #ffffff;
-            padding: 2em; /* Changed to em for relative sizing */
-            margin-bottom: 2em; /* Added margin for spacing */
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 2em 0; /* Changed to em for relative sizing */
-            text-align: center;
-            margin-top: 4em; /* Added margin for spacing */
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column; /* Stack footer sections on mobile */
-            align-items: center;
-            padding-bottom: 2em; /* Added padding for spacing */
-        }
-
-        .footer-info, .footer-links {
-            margin-bottom: 2em; /* Spacing between footer sections */
-            text-align: center; /* Center text in footer sections */
-        }
-
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center; /* Center logo and name */
-            margin-bottom: 1em; /* Spacing below logo */
-        }
-
-        .footer-logo span {
-            color: #ff6f61;
-            font-size: 2em; /* Larger logo text */
-            font-weight: bold;
-            margin-right: 0.2em; /* Spacing between letters */
-        }
-
-        .footer-logo h3 {
-            font-size: 1.5em; /* Larger logo name */
-            font-weight: bold;
-            margin: 0; /* Reset margin */
-        }
-
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5em; /* Spacing between footer links */
-        }
-
-
-        .footer-links a, .social-links a, .social-links-contact a, .contact-details a {
-            color: #ff6f61;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover, .social-links a:hover, .social-links-contact a:hover, .contact-details a:hover {
-            color: #e55b50;
-        }
-
-        .social-links, .social-links-contact {
-            display: flex;
-            justify-content: center; /* Center social links */
-            gap: 1em; /* Spacing between social icons */
-            margin-top: 1em; /* Spacing above social links */
-        }
-
-
-        .social-links a i, .social-links-contact a i {
-            font-size: 1.5em; /* Larger social icons */
-        }
-
-
-        .footer-bottom {
-            padding-top: 2em; /* Spacing above bottom footer */
-            border-top: 1px solid #444; /* Separator line */
-            text-align: center; /* Center bottom footer text */
-        }
-
-
-        /* Add smooth scrolling for better UX */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Enhance form input styles */
-        .input-with-icon {
-            position: relative; /* For icon positioning */
-        }
-
-        .input-with-icon i {
-            position: absolute;
-            left: 1em; /* Icon position from left */
-            top: 50%;
-            transform: translateY(-50%);
-            color: #777; /* Icon color */
-        }
-
-        .input-with-icon input,
-        .input-with-icon textarea {
-            width: 100%;
-            padding: 0.8em; /* Consistent padding */
-            padding-left: 2.5em; /* Added padding for icon space */
-            border: 1px solid #ccc;
-            border-radius: 0.3em; /* Consistent border radius */
-            margin-bottom: 1em;
-            transition: border-color 0.3s ease;
-            font-size: 1em; /* Consistent font size */
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
-        }
-
-        .input-with-icon textarea {
-            min-height: 150px; /* Minimum height for textarea */
-        }
-
-
-        .input-with-icon input:focus,
-        .input-with-icon textarea:focus {
-            border-color: #4a90e2;
-            outline: none;
-        }
-
-        /* Add hover effect to project cards */
-        .project-card:hover {
-            transform: translateY(-0.5em); /* Slight lift on hover */
-            transition: transform 0.3s ease;
-        }
-
-        /* Add animations to particles */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Allow clicks through particles */
-        }
-        .particles .particle {
-            position: absolute;
-            width: 0.5em; /* Smaller particles */
-            height: 0.5em; /* Smaller particles */
-            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
-            border-radius: 50%;
-            animation: float 6s infinite ease-in-out, moveHorizontal 20s infinite alternate; /* Adjusted animation duration and added horizontal movement */
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-1em); /* Reduced float distance */
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes moveHorizontal {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(10%); } /* Slight horizontal movement */
-        }
-
-
-        /* Optimize images for faster loading */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .intro-photo {
-            border-radius: 50%;
-            object-fit: cover;
-            max-width: 150px; /* Limit intro photo size */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        /* Lazy load images */
-        img[loading="lazy"] {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        img[loading="lazy"][src] {
-            opacity: 1;
-        }
-
-
-        /* Responsive styles for mobile */
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px; /* Base font size for mobile */
-            }
-            header {
-                padding: 0.75em 0; /* Adjusted padding */
-            }
-
-            .container {
-                width: 90%; /* Slightly narrower container on mobile */
-                padding-left: 10px; /* Adjusted padding */
-                padding-right: 10px; /* Adjusted padding */
-            }
-
-            .navbar .logo {
-                font-size: 1.3em; /* Adjusted logo size */
-            }
-
-            .navbar .nav-links {
-                display: none;
-                flex-direction: column;
-                background-color: #4a90e2;
-                position: absolute;
-                top: 100%; /* Position nav links below header */
-                right: 0;
-                left: 0; /* Full width nav links */
-                text-align: center;
-                transition: max-height 0.3s ease-in-out;
-                max-height: 0;
-                overflow: hidden;
-                z-index: 10; /* Ensure nav links are above other content */
-            }
-
-            .navbar .nav-links.active {
-                display: flex;
-                max-height: 500px; /* Adjust as needed */
-            }
-
-            .navbar .nav-links li {
-                margin: 0; /* Reset list item margins */
-            }
-
-
-            .navbar .nav-links a {
-                padding: 1em; /* Increased padding for mobile nav links */
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator for nav links */
-            }
-
-            .navbar .nav-links a:last-child {
-                border-bottom: none; /* Remove separator from last link */
-            }
-
-
-            .navbar .nav-toggler {
-                display: block;
-                cursor: pointer;
-                position: relative; /* For centering spans */
-                width: 30px; /* Adjust as needed */
-                height: 30px; /* Adjust as needed */
-                margin-left: auto; /* Push to the right */
-            }
-
-            .navbar .nav-toggler span {
-                display: block;
-                position: absolute; /* For positioning lines */
-                left: 5px; /* Spacing from left edge */
-                right: 5px; /* Spacing from right edge */
-                height: 2px;
-                background-color: #fff;
-                top: 50%;
-                transform: translateY(-50%); /* Center vertically */
-                transition: all 0.3s ease;
-            }
-
-            .navbar .nav-toggler span::before,
-            .navbar .nav-toggler span::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                right: 0;
-                height: 100%;
-                background-color: #fff;
-                transition: all 0.3s ease;
-            }
-
-            .navbar .nav-toggler span::before {
-                top: -8px; /* Position top line */
-            }
-
-            .navbar .nav-toggler span::after {
-                bottom: -8px; /* Position bottom line */
-            }
-
-
-            .navbar .nav-toggler.active span {
-                background-color: transparent; /* Hide middle line when active */
-            }
-
-            .navbar .nav-toggler.active span::before {
-                top: 0;
-                transform: rotate(45deg); /* Rotate top line to 45 degrees */
-            }
-
-            .navbar .nav-toggler.active span::after {
-                bottom: 0;
-                transform: rotate(-45deg); /* Rotate bottom line to -45 degrees */
-            }
-
-
-            .hero {
-                padding: 3em 0; /* Adjusted padding */
-            }
-
-            .hero h1 {
-                font-size: 2em; /* Adjusted font size */
-            }
-
-            .hero p {
-                font-size: 1em; /* Adjusted font size */
-            }
-
-            .btn {
-                padding: 0.7em 1.4em; /* Adjusted padding */
-                font-size: 0.9em; /* Adjusted font size */
-            }
-
-            .introduction .intro-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .introduction .intro-photo {
-                margin-bottom: 1.5em; /* Adjusted margin */
-                max-width: 120px; /* Smaller intro photo on mobile */
-            }
-
-            .about-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .skills-container {
-                flex-direction: column;
-                align-items: stretch; /* Stretch skills to full width */
-            }
-
-            .skill-item {
-                margin-bottom: 1.5em; /* Adjusted margin */
-                text-align: center; /* Center skill items on mobile */
-            }
-
-            .skill-icon {
-                margin-right: 0; /* Remove right margin for icon */
-                margin-bottom: 0.5em; /* Add bottom margin for icon */
-            }
-
-            .testimonials-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .testimonial-card {
-                margin-bottom: 2em; /* Adjusted margin */
-                padding: 1.5em; /* Adjusted padding */
-            }
-
-
-            .blog-posts {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .blog-post {
-                margin-bottom: 2em; /* Adjusted margin */
-                padding: 1.5em; /* Adjusted padding */
-            }
-
-
-            .contact-grid {
-                flex-direction: column;
-            }
-
-            .contact-form,
-            .contact-info {
-                width: 100%;
-                margin-bottom: 2em; /* Adjusted margin */
-            }
-
-            .footer-content {
-                flex-direction: column; /* Stack footer sections */
-                text-align: center; /* Center footer text */
-            }
-
-            .footer-info, .footer-links, .footer-bottom {
-                width: 100%; /* Full width footer sections */
-                padding-left: 10px; /* Consistent padding */
-                padding-right: 10px; /* Consistent padding */
-                box-sizing: border-box; /* Include padding in width */
-            }
-
-            .footer-links {
-                align-items: center; /* Center footer links on mobile */
-            }
-
-
-            .footer-links ul {
-                text-align: center; /* Center links in list */
-            }
-
-            .footer-section {
-                margin-bottom: 2em; /* Spacing between footer sections */
-            }
-
-            .social-links {
-                margin-top: 1em; /* Spacing above social links */
-                justify-content: center; /* Center social icons */
-            }
-
-            .footer-bottom {
-                padding-top: 1.5em; /* Adjusted padding */
-            }
-
-
-        }
-
-        /* Responsive styles for landscape mode - minor adjustments for better landscape view on phones */
-        @media (orientation: landscape) and (max-width: 768px) {
-            .hero {
-                padding: 2em 0; /* Less padding in landscape */
-            }
-
-            .hero h1 {
-                font-size: 1.8em; /* Slightly smaller font in landscape */
-            }
-
-            .hero p {
-                font-size: 0.95em; /* Slightly smaller font in landscape */
-            }
-
-            .btn {
-                padding: 0.6em 1.2em; /* Slightly smaller button in landscape */
-                font-size: 0.85em; /* Slightly smaller font in landscape */
-            }
-
-            .introduction .intro-content {
-                flex-direction: row; /* Keep row layout in landscape */
-                align-items: center; /* Center items vertically */
-                text-align: left; /* Left align text */
-            }
-
-            .introduction .intro-photo {
-                margin-right: 1.5em; /* Spacing to the right of photo */
-                margin-bottom: 0; /* Remove bottom margin */
-                max-width: 100px; /* Slightly smaller photo in landscape */
-            }
-
-            .about-content {
-                flex-direction: row; /* Keep row layout in landscape */
-                align-items: flex-start; /* Align items to the start */
-                text-align: left; /* Left align text */
-            }
-
-            .skills-container {
-                flex-direction: row; /* Keep row layout for skills in landscape */
-                align-items: flex-start; /* Align skill items to the start */
-                justify-content: flex-start; /* Align skills to the start */
-                flex-wrap: wrap; /* Allow skills to wrap */
-            }
-
-            .skill-item {
-                width: calc(50% - 1em); /* Two skills per row in landscape */
-                margin-right: 1em; /* Spacing between skill items */
-                margin-bottom: 1em; /* Spacing below skill items */
-                text-align: left; /* Left align skill text */
-            }
-
-            .skill-icon {
-                margin-right: 0.5em; /* Spacing to the right of icon */
-                margin-bottom: 0; /* Remove bottom margin for icon */
-            }
-
-            .testimonials-grid {
-                flex-direction: row; /* Keep row layout for testimonials in landscape */
-                align-items: stretch; /* Stretch testimonials vertically */
-            }
-
-            .testimonial-card {
-                margin-bottom: 0; /* Remove bottom margin */
-                margin-right: 1.5em; /* Spacing to the right of testimonial */
-            }
-
-            .testimonial-card:last-child {
-                margin-right: 0; /* Remove right margin from last testimonial */
-            }
-
-
-            .blog-posts {
-                flex-direction: row; /* Keep row layout for blog posts in landscape */
-                align-items: flex-start; /* Align blog posts to the start */
-            }
-
-            .blog-post {
-                width: calc(50% - 1em); /* Two blog posts per row in landscape */
-                margin-right: 1em; /* Spacing to the right of blog post */
-                margin-bottom: 1.5em; /* Spacing below blog posts */
-            }
-
-            .blog-post:last-child,
-            .blog-post:nth-child(odd):last-child { /* Target last odd-numbered post in case of odd number of posts */
-                margin-right: 0; /* Remove right margin from last blog post in row */
-            }
-
-
-            .contact-grid {
-                flex-direction: row; /* Keep row layout for contact in landscape */
-                align-items: flex-start; /* Align contact sections to the start */
-            }
-
-            .contact-form,
-            .contact-info {
-                width: 48%; /* Two columns for contact form and info */
-                margin-bottom: 0; /* Remove bottom margin */
-                margin-right: 2%; /* Spacing between contact sections */
-            }
-
-            .contact-info {
-                margin-right: 0; /* Remove right margin from contact info */
-            }
-
-
-            .footer-content {
-                flex-direction: row; /* Keep row layout for footer in landscape */
-                align-items: flex-start; /* Align footer sections to the start */
-                justify-content: space-around; /* Distribute footer sections evenly */
-            }
-
-            .footer-info, .footer-links {
-                margin-bottom: 0; /* Remove bottom margin */
-                text-align: left; /* Left align text in footer sections */
-                width: auto; /* Auto width for footer sections */
-                margin-right: 2em; /* Spacing between footer sections */
-            }
-
-            .footer-links {
-                align-items: flex-start; /* Align footer links to the start */
-            }
-
-            .footer-links ul {
-                text-align: left; /* Left align links in list */
-            }
-
-
-            .footer-section {
-                margin-bottom: 0; /* Remove bottom margin */
-            }
-        }
-
-
-        .intro-photo {
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* Page Loader Styles - No changes needed as they are fine */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #f0f4f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000; /* High z-index to be on top */
-            transition: opacity 0.5s;
-        }
-
-        .page-loader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader {
-            display: flex;
-        }
-
-        .circle {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #4a90e2;
-            margin: 0 5px;
-            animation: loader-animation 1.2s infinite ease-in-out;
-        }
-
-        .circle:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .circle:nth-child(3) {
-            animation-delay: 0.8s;
-        }
-
-        @keyframes loader-animation {
-            0%, 80%, 100% {
-                transform: scale(0);
-                opacity: 0.5;
-            }
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .loader-text {
-            margin-left: 20px;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        .loader-dots {
-            animation: loader-dots-animation 1.2s infinite steps(3, end);
-        }
-
-        @keyframes loader-dots-animation {
-            0%, 80%, 100% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-
-        /* Scroll-to-Top Button Styles - Adjusted for potential blurring issue */
-        .scroll-to-top-btn {
-            display: none; /* Hidden by default */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ff6f61;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 1.5em;
-            line-height: 1;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 999; /* Ensure it's above other content */
-            opacity: 0.8; /* Slightly transparent */
-            transition: opacity 0.3s, background-color 0.3s; /* Smooth transitions */
-        }
-
-        .scroll-to-top-btn:hover {
-            background-color: #e55b50;
-            opacity: 1;
-        }
-
-        .scroll-to-top-btn::before { /* Up arrow using pseudo-element - cleaner than ↑ character */
-            content: '\2191'; /* Unicode up arrow character */
-            display: block;
-            font-size: 1.2em;
-            line-height: 1;
-        }
-
-
-        /* Skip Link Styles - No changes needed for functionality */
-        .skip-link {
-            position: absolute;
-            top: -40px; /* Initially off-screen */
-            left: 0;
-            background: #4a90e2;
-            color: white;
-            padding: 0.5em 1em;
-            z-index: 1000; /* Ensure it's on top */
-            transition: top 0.3s ease;
-        }
-
-        .skip-link:focus {
-            top: 0; /* Bring into view when focused */
-        }
-
-
-        /* Utility Classes and Minor Adjustments */
-        .section-title {
-            text-align: center;
-            margin-bottom: 3em; /* Increased margin for section title */
-        }
-
-        .section-title h2 {
-            font-size: 2em; /* Larger section titles */
-            font-weight: bold;
-            margin-bottom: 0.5em; /* Spacing below title */
-            color: #333; /* Darker title color */
-        }
-
-        .section-title p {
-            color: #777; /* Slightly lighter subtitle color */
-            font-size: 1.1em; /* Slightly larger subtitle font */
-            line-height: 1.5; /* Improved subtitle line height */
-        }
-
-        .intro-text h2 {
-            font-size: 1.8em; /* Adjusted intro title size */
-            margin-bottom: 0.5em; /* Spacing below intro title */
-        }
-
-        .intro-text p {
-            line-height: 1.7; /* Improved intro text line height */
-            color: #555; /* Slightly darker intro text color */
-        }
-
-        .about-text h3, .skills h3, .contact-info h3, .blog-post h3 {
-            font-size: 1.6em; /* Adjusted heading sizes in sections */
-            margin-bottom: 0.8em; /* Spacing below section headings */
-            color: #333; /* Darker section heading color */
-        }
-
-        .about-text p, .skills-container, .project-content p, .testimonial-card p, .blog-post p, .contact-info p, .contact-details {
-            line-height: 1.6; /* Consistent line height for text blocks */
-            color: #666; /* Slightly darker text color for content */
-        }
-
-        .skill-item h4 {
-            font-size: 1.1em; /* Adjusted skill name size */
-            margin-bottom: 0.3em; /* Spacing below skill name */
-            color: #444; /* Darker skill name color */
-        }
-
-        .progress-bar {
-            background-color: #ddd; /* Light grey progress bar background */
-            border-radius: 0.3em; /* Rounded progress bar */
-            height: 0.6em; /* Reduced progress bar height */
-            overflow: hidden; /* Clip progress within bounds */
-        }
-
-        .progress {
-            background-color: #4a90e2; /* Primary color for progress fill */
-            height: 100%;
-            width: 0%; /* Width set dynamically via inline style */
-        }
-
-        .project-card {
-            background: #fff; /* White project card background */
-            border-radius: 10px;
-            overflow: hidden; /* Clip content within card bounds */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effect */
-            display: flex; /* Flex layout for project card */
-            flex-direction: column; /* Stack image and content vertically */
-            margin-bottom: 1.5em; /* Spacing below project cards */
-        }
-
-        .project-card:hover {
-            transform: translateY(-0.5em); /* Lift effect on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
-        }
-
-        .project-img {
-            overflow: hidden; /* Ensure image doesn't overflow rounded corners */
-        }
-
-        .project-content {
-            padding: 1.5em; /* Padding inside project content area */
-            display: flex; /* Flex layout for project content */
-            flex-direction: column; /* Stack project content vertically */
-        }
-
-        .project-content h3 {
-            font-size: 1.3em; /* Adjusted project title size */
-            margin-bottom: 0.5em; /* Spacing below project title */
-            color: #333; /* Darker project title color */
-        }
-
-        .project-content p {
-            margin-bottom: 1em; /* Spacing below project description */
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap; /* Allow tech badges to wrap */
-            gap: 0.5em; /* Spacing between tech badges */
-            margin-bottom: 1em; /* Spacing below tech stack */
-        }
-
-        .tech-badge {
-            background-color: #eef0f2; /* Light grey tech badge background */
-            color: #555; /* Tech badge text color */
-            padding: 0.4em 0.7em; /* Padding inside tech badge */
-            border-radius: 0.3em; /* Rounded tech badges */
-            font-size: 0.85em; /* Smaller font size for tech badges */
-            display: inline-flex; /* Use inline-flex to align icon and text */
-            align-items: center; /* Vertically align icon and text */
-            gap: 0.3em; /* Spacing between icon and text in badge */
-        }
-
-        .tech-badge i {
-            font-size: 0.9em; /* Slightly smaller icon in badge */
-        }
-
-        .testimonial-card {
-            background: #fff; /* White testimonial card background */
-            border-radius: 10px;
-            padding: 2em; /* Padding inside testimonial card */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
-            margin-bottom: 1.5em; /* Spacing below testimonial cards */
-        }
-
-        .testimonial-card p {
-            font-style: italic; /* Italic testimonial text */
-            margin-bottom: 1em; /* Spacing below testimonial quote */
-        }
-
-        .testimonial-card h4 {
-            font-weight: bold; /* Bold testimonial author name */
-            margin-bottom: 0.3em; /* Spacing below author name */
-            color: #333; /* Darker author name color */
-        }
-
-        .testimonial-card p:last-of-type { /* Style for the role/position under author name */
-            font-size: 0.95em; /* Slightly smaller font size for role */
-            color: #777; /* Lighter color for role */
-            margin-bottom: 0; /* No margin below role */
-        }
-
-        .blog-post {
-            background: #fff; /* White blog post background */
-            border-radius: 10px;
-            padding: 2em; /* Padding inside blog post */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle card shadow */
-            margin-bottom: 1.5em; /* Spacing below blog posts */
-        }
-
-        .blog-post h3 {
-            margin-bottom: 0.7em; /* Spacing below blog post title */
-        }
-
-        .blog-post p {
-            margin-bottom: 1.2em; /* Spacing below blog post excerpt */
-        }
-
-        .contact-info .contact-details {
-            margin-top: 1.5em; /* Spacing above contact details */
-        }
-
-        .contact-info .contact-item {
-            display: flex; /* Flex layout for contact item */
-            align-items: center; /* Vertically align icon and text */
-            margin-bottom: 1em; /* Spacing below contact items */
-        }
-
-        .contact-info .contact-item:last-child {
-            margin-bottom: 0; /* No margin below last contact item */
-        }
-
-        .contact-info .contact-icon {
-            margin-right: 1em; /* Spacing to the right of contact icon */
-            color: #4a90e2; /* Primary color for contact icons */
-            font-size: 1.2em; /* Larger contact icons */
-            width: 25px; /* Fixed width for icons to align text */
-            text-align: center; /* Center icons in fixed width */
-        }
-
-        .contact-info .contact-text h4 {
-            font-weight: bold; /* Bold contact detail heading */
-            margin-bottom: 0.2em; /* Spacing below detail heading */
-            color: #333; /* Darker detail heading color */
-        }
-
-        .contact-info .contact-text p {
-            margin-bottom: 0; /* No margin below detail text */
-        }
-
-        .footer-section h4 {
-            font-size: 1.2em; /* Adjusted footer section heading size */
-            font-weight: bold; /* Bold footer section headings */
-            margin-bottom: 0.8em; /* Spacing below footer section headings */
-            color: #eee; /* Lighter footer heading color */
-        }
-
-        .footer-section ul {
-            list-style: none; /* Remove list bullets */
-            padding: 0; /* Reset padding */
-            margin: 0; /* Reset margin */
-        }
-
-        .footer-section li {
-            margin-bottom: 0.6em; /* Spacing below footer list items */
-        }
-
-        .footer-section li:last-child {
-            margin-bottom: 0; /* No margin below last footer list item */
-        }
-
-        .footer-contact li {
-            display: flex; /* Flex layout for footer contact items */
-            align-items: flex-start; /* Align items to the start */
-            margin-bottom: 0.8em; /* Spacing below footer contact items */
-        }
-
-        .footer-contact li:last-child {
-            margin-bottom: 0; /* No margin below last footer contact item */
-        }
-
-        .footer-contact li i {
-            margin-right: 0.8em; /* Spacing to the right of footer contact icons */
-            color: #ff6f61; /* Accent color for footer contact icons */
-            font-size: 1em; /* Adjusted footer contact icon size */
-            width: 20px; /* Fixed width for icons to align text */
-            text-align: center; /* Center icons in fixed width */
-        }
-
-
-    </style>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -1091,7 +39,7 @@
             "name": "Abel Arroyo",
             "url": "https://dathaze20.github.io/My-Portfolio/",
             "image": "images/170153954.jpeg",
-            "jobTitle": "Full Stack Web Developer",
+            "jobTitle": "Full-Stack Developer",
             "sameAs": [
                 "https://github.com/Dathaze20",
                 "https://medium.com/@dathaze20"
@@ -1101,8 +49,8 @@
                 "addressLocality": "Brooklyn",
                 "addressRegion": "NY"
             },
-            "description": "Full Stack Web Developer specializing in modern web applications with React, Node.js, and more",
-            "skills": "HTML, CSS, JavaScript, React, Node.js, MongoDB, SQL, Git, GitHub, Python, Responsive Design, Bootstrap, AWS"
+            "description": "Full-stack developer building AI-integrated web apps, native Android tools, and cross-platform products.",
+            "knowsAbout": "HTML, CSS, JavaScript, TypeScript, React, Python, Kivy, Capacitor, Android (Java), Gemini API, Git, GitHub Actions, Vite, Tailwind CSS"
         }
     </script>
 </head>
@@ -1114,16 +62,14 @@
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
-        <div class="loader-text">Loading<span class="loader-dots">...</span></div>
     </div>
 
-    <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
         <div class="container">
             <nav class="navbar" aria-label="Main navigation">
-                <a href="#" class="logo">
+                <a href="#home" class="logo">
                     <span>AA</span> Abel Arroyo
                 </a>
                 <div class="nav-container">
@@ -1132,11 +78,11 @@
                             <li role="none"><a href="#home" role="menuitem">Home</a></li>
                             <li role="none"><a href="#about" role="menuitem">About</a></li>
                             <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
-                            <li role="none"><a href="#blog" role="menuitem">Blog</a></li>
+                            <li role="none"><a href="#writing" role="menuitem">Writing</a></li>
                             <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                         </ul>
                     </div>
-                    <button class="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+                    <button class="dark-mode-toggle" aria-label="Toggle light mode"><i class="fas fa-sun"></i></button>
                     <button type="button" class="nav-toggler" aria-label="Toggle navigation menu" aria-expanded="false">
                         <span></span>
                     </button>
@@ -1146,35 +92,39 @@
     </header>
 
     <main id="main-content">
-        <section id="home" class="hero animate__animated animate__fadeIn">
-            <video autoplay muted loop class="background-video" preload="metadata">
-                <source src="https://via.placeholder.com/150" type="video/mp4" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
-            </video>
-            <div class="particles">
-                <div class="particle" style="top: 10%; left: 20%;"></div>
-                <div class="particle" style="top: 30%; left: 40%;"></div>
-                <div class="particle" style="top: 50%; left: 60%;"></div>
-                <div class="particle" style="top: 70%; left: 80%;"></div>
+        <section id="home" class="hero">
+            <div class="hero-mesh" aria-hidden="true"></div>
+            <div class="particles" aria-hidden="true">
+                <div class="particle" style="top: 15%; left: 12%;"></div>
+                <div class="particle" style="top: 30%; left: 78%; animation-delay: 1.5s;"></div>
+                <div class="particle" style="top: 65%; left: 25%; animation-delay: 3s;"></div>
+                <div class="particle" style="top: 55%; left: 88%; animation-delay: 2s;"></div>
+                <div class="particle" style="top: 80%; left: 55%; animation-delay: 4s;"></div>
             </div>
             <div class="container">
+                <span class="eyebrow"><span class="dot"></span> Available for new projects</span>
                 <h1>Abel Arroyo</h1>
-                <p>Full Stack Web Developer | UI/UX Enthusiast</p>
-                <h2 class="tagline">Transforming Ideas into Seamless Digital Experiences</h2>
+                <p class="tagline">Full-stack developer building <span class="gradient-text">AI-integrated products</span> — from browser-based tools to native Android apps — shipped with real CI/CD, not just clones.</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Hire Me</a>
+                    <a href="#projects" class="btn">View My Work <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><strong>6</strong><span>Shipped Projects</span></div>
+                    <div class="hero-stat"><strong>3</strong><span>Platforms: Web · Android · PWA</span></div>
+                    <div class="hero-stat"><strong>100%</strong><span>CI/CD on Every Push</span></div>
                 </div>
             </div>
         </section>
 
-        <!-- Introduction Section -->
-        <section id="introduction" class="introduction" style="margin-top: 80px;">
+        <!-- Introduction -->
+        <section id="introduction" class="introduction">
             <div class="container">
                 <div class="intro-content">
-                    <img src="images/170153954.jpeg" alt="Professional headshot of Abel Arroyo" class="intro-photo animate__animated animate__fadeIn" width="150" height="150" loading="lazy">
+                    <img src="images/170153954.jpeg" alt="Portrait of Abel Arroyo" class="intro-photo" width="130" height="130" loading="lazy">
                     <div class="intro-text">
-                        <h2>Hi, I'm Abel Arroyo</h2>
-                        <p>I'm a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
+                        <h2>Hi, I'm Abel</h2>
+                        <p>I build products end to end — front end, back end, native mobile, and the AI plumbing in between. My projects lean on the Gemini API for real features (not gimmicks), get tested with Pytest and Vitest, and deploy themselves through GitHub Actions.</p>
                     </div>
                 </div>
             </div>
@@ -1184,453 +134,338 @@
             <div class="container">
                 <div class="section-title">
                     <h2>About Me</h2>
-                    <p>Learn more about my skills and experience</p>
+                    <p>What I actually build, and the tools I build it with</p>
                 </div>
                 <div class="about-content">
                     <div class="about-text">
                         <h3>Who Am I?</h3>
-                        <p>I'm Abel Arroyo, a passionate Full Stack Web Developer with expertise in building responsive and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I create seamless digital experiences that solve real-world problems.</p>
-                        <p>My journey in web development has equipped me with a diverse skill set and a keen eye for detail. I'm constantly learning and adapting to new technologies to stay at the forefront of the industry.</p>
-                        <a href="resume.pdf" class="btn" download target="_blank">Download Resume <i class="fas fa-download"></i></a>
+                        <p>I'm a full-stack developer based in Brooklyn, NY. Instead of tutorial-clone portfolios, I ship real, working software: an AI blog-drafting tool that generates my own long-form writing, a music player with a hand-written native Android plugin, a browser-based audio-to-video converter with a full test suite, and a couple of Python/Kivy apps that talk to real APIs.</p>
+                        <p>Every repo I keep active runs its own CI — linting, type-checking, and tests on every push, with several auto-deploying to GitHub Pages or building signed Android bundles. I care as much about the pipeline as the product.</p>
+                        <div class="about-cta">
+                            <a href="#projects" class="btn btn-outline">See the Work</a>
+                            <a href="https://github.com/Dathaze20" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub Profile <i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                     <div class="skills">
-                        <h3>My Skills</h3>
+                        <h3>Tools I Reach For</h3>
                         <div class="skills-container">
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-html5"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fab fa-js"></i></div>
                                 <div class="skill-info">
-                                    <h4>HTML/CSS</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 95%"></div>
-                                    </div>
+                                    <h4>JavaScript / TypeScript</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 92%"></div></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-js"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fab fa-react"></i></div>
                                 <div class="skill-info">
-                                    <h4>JavaScript</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 90%"></div>
-                                    </div>
+                                    <h4>React + Vite</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-react"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fab fa-python"></i></div>
                                 <div class="skill-info">
-                                    <h4>React</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 85%"></div>
-                                    </div>
+                                    <h4>Python / Kivy</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-node-js"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fas fa-robot"></i></div>
                                 <div class="skill-info">
-                                    <h4>Node.js</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 80%"></div>
-                                    </div>
+                                    <h4>Gemini API / AI Integration</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 88%"></div></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fas fa-database"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fab fa-android"></i></div>
                                 <div class="skill-info">
-                                    <h4>MongoDB/SQL</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 75%"></div>
-                                    </div>
+                                    <h4>Native Android (Capacitor + Java)</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
                                 </div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-git-alt"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fas fa-code-branch"></i></div>
                                 <div class="skill-info">
-                                    <h4>Git/GitHub</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 85%"></div>
-                                    </div>
+                                    <h4>Git / GitHub Actions CI-CD</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
                                 </div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-python"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fas fa-vial"></i></div>
                                 <div class="skill-info">
-                                    <h4>Python</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 70%"></div>
-                                    </div>
+                                    <h4>Testing (Pytest / Vitest)</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 78%"></div></div>
                                 </div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
+                                <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
                                 <div class="skill-info">
-                                    <h4>Responsive Design</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-bootstrap"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <h4>Bootstrap</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-aws"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <h4>AWS</h4>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 65%"></div>
-                                    </div>
+                                    <h4>Responsive Design / PWA</h4>
+                                    <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="stat-strip">
+                    <div class="stat-cell"><strong class="gradient-text">2</strong><span>Native Android Builds</span></div>
+                    <div class="stat-cell"><strong class="gradient-text">3</strong><span>Gemini-Powered Features</span></div>
+                    <div class="stat-cell"><strong class="gradient-text">6</strong><span>Public Repos, CI-Backed</span></div>
+                    <div class="stat-cell"><strong class="gradient-text">10+</strong><span>Long-Form Essays Published</span></div>
+                </div>
             </div>
         </section>
 
-        <section id="projects" style="background-color: #f0f4f8;">
+        <section id="projects">
             <div class="container">
                 <div class="section-title">
                     <h2>My Projects</h2>
-                    <p>Check out some of my recent work</p>
+                    <p>Real, deployed work — pulled straight from GitHub</p>
                 </div>
                 <div class="project-filter">
                     <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="frontend">Frontend</button>
-                    <button class="filter-btn" data-filter="backend">Backend</button>
-                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                    <button class="filter-btn" data-filter="ai">AI Tools</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="games">Games</button>
                 </div>
-                <div class="projects-carousel">
-                    <div class="project-card neumorphism">
-                        <div class="project-img">
-                            <img src="https://source.unsplash.com/300x200/?website" alt="E-Commerce Platform Screenshot" loading="lazy" width="300" height="200">
-                        </div>
+                <div class="projects-grid">
+
+                    <div class="project-card" data-category="ai">
+                        <div class="project-img tile-ai"><i class="fas fa-feather-pointed" aria-hidden="true"></i></div>
                         <div class="project-content">
-                            <h3>E-Commerce Platform</h3>
-                            <p>A full-featured online store with product listings, shopping cart, and secure checkout.</p>
+                            <h3>Forge (PostPilot)</h3>
+                            <p>A one-tap forensic blog-post generator powered by Gemini — feed it notes and a stance, it drafts a long-form biographical article plus YouTube and Medium metadata. Runs entirely client-side as an installable PWA; the API key never leaves your browser.</p>
                             <div class="tech-stack">
-                                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
-                                <span class="tech-badge"><i class="fab fa-node"></i> Node.js</span>
-                                <span class="tech-badge"><i class="fas fa-database"></i> MongoDB</span>
-                                <span class="tech-badge"><i class="fab fa-stripe"></i> Stripe</span>
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">Vite</span>
+                                <span class="tech-badge">Tailwind</span>
+                                <span class="tech-badge">Gemini API</span>
                             </div>
-                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
+                            <div class="project-links">
+                                <a href="https://dathaze20.github.io/Forge/" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/Dathaze20/Forge" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Code <i class="fab fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card neumorphism">
-                        <div class="project-img">
-                            <img src="https://source.unsplash.com/300x200/?app" alt="Task Management App Screenshot" loading="lazy" width="300" height="200">
-                        </div>
+
+                    <div class="project-card" data-category="ai mobile">
+                        <div class="project-img tile-mobile"><i class="fas fa-music" aria-hidden="true"></i></div>
                         <div class="project-content">
-                            <h3>Task Management App</h3>
-                            <p>A productivity tool for organizing tasks with features like drag-and-drop, reminders, and team collaboration.</p>
+                            <h3>Muzio AI — Smart Music Player</h3>
+                            <p>A local-first, dark-themed music player for web and Android that auto-tags messy MP3s (artist, album, year, genre) via Gemini. Ships with a hand-written native Java plugin that queries Android's MediaStore directly and handles the API 33 permission split.</p>
                             <div class="tech-stack">
-                                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
-                                <span class="tech-badge"><i class="fab fa-node"></i> Express</span>
-                                <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Capacitor</span>
+                                <span class="tech-badge">Java (Android)</span>
+                                <span class="tech-badge">Gemini API</span>
+                                <span class="tech-badge">IndexedDB</span>
                             </div>
-                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
+                            <div class="project-links">
+                                <a href="https://github.com/Dathaze20/Music-Player-Tagger" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Code <i class="fab fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card neumorphism">
-                        <div class="project-img">
-                            <img src="https://source.unsplash.com/300x200/?dashboard" alt="Analytics Dashboard Screenshot" loading="lazy" width="300" height="200">
-                        </div>
+
+                    <div class="project-card" data-category="web">
+                        <div class="project-img tile-web"><i class="fas fa-film" aria-hidden="true"></i></div>
                         <div class="project-content">
-                            <h3>Analytics Dashboard</h3>
-                            <p>An interactive data visualization platform with real-time updates and customizable widgets.</p>
+                            <h3>Audio to YouTube MP4</h3>
+                            <p>Turns an audio file and cover art into a YouTube-ready 720p video, entirely in the browser — no upload, no video editor. Canvas + Web Audio + MediaRecorder pipeline, with a real Vitest suite, strict TypeScript, and CI running lint/test/build on every PR.</p>
                             <div class="tech-stack">
-                                <span class="tech-badge"><i class="fab fa-react"></i> React</span>
-                                <span class="tech-badge"><i class="fab fa-js"></i> D3.js</span>
-                                <span class="tech-badge"><i class="fas fa-fire"></i> Firebase</span>
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">Canvas API</span>
+                                <span class="tech-badge">Vitest</span>
                             </div>
-                            <a href="#" class="btn" style="margin-top: 10px;">View Project <i class="fas fa-external-link-alt"></i></a>
+                            <div class="project-links">
+                                <a href="https://dathaze20.github.io/AUDIO-TO-YOUTUBE-MP4/" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://github.com/Dathaze20/AUDIO-TO-YOUTUBE-MP4" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Code <i class="fab fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="project-card" data-category="mobile">
+                        <div class="project-img tile-mobile"><i class="fas fa-clapperboard" aria-hidden="true"></i></div>
+                        <div class="project-content">
+                            <h3>TMDB Movie Recommender</h3>
+                            <p>A cross-platform Kivy app for browsing and searching TMDB's catalog, with infinite scroll, a persistent local watchlist, disk-cached posters, and an installable Android APK via Buildozer. Core logic is unit-tested with Pytest and runs in CI.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Kivy</span>
+                                <span class="tech-badge">TMDB API</span>
+                                <span class="tech-badge">Pytest</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Dathaze20/TMBD-Movie-Recommender-" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Code <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="mobile games">
+                        <div class="project-img tile-games"><i class="fas fa-gamepad" aria-hidden="true"></i></div>
+                        <div class="project-content">
+                            <h3>Game Recommender</h3>
+                            <p>A Kivy browser for the RAWG catalog with 30+ curated shelves (genre, platform, retro consoles), a wishlist/played tracker with rollup stats, and a similar-games chain that falls back from suggestions to series to genre matches.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Kivy</span>
+                                <span class="tech-badge">RAWG API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Dathaze20/Game-recommender-" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Code <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="games web">
+                        <div class="project-img tile-games"><i class="fas fa-table-tennis-paddle-ball" aria-hidden="true"></i></div>
+                        <div class="project-content">
+                            <h3>Pong Game</h3>
+                            <p>A classic Pong build with real ball physics, a scaling AI opponent, and touch controls tuned for mobile. Installable as a PWA with offline support, sound effects, and a GitHub Actions workflow that deploys on every push to main.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Canvas API</span>
+                                <span class="tech-badge">PWA</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Dathaze20/Pong-Game-" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Code <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="glassmorphism">
+        <section id="writing" class="glassmorphism">
             <div class="container">
                 <div class="section-title">
-                    <h2>Testimonials</h2>
-                    <p>What clients and colleagues say about me</p>
+                    <h2>Writing</h2>
+                    <p>Long-form essays on comedy, history, and the ideas behind the ideas — published under "Golden Gems" on Medium</p>
                 </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p>"Abel is a highly skilled developer with a keen eye for detail. His work on our project was exceptional."</p>
-                        <h4>John Doe</h4>
-                        <p>CEO, Tech Company</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Working with Abel was a pleasure. He delivered high-quality code and was always willing to go the extra mile."</p>
-                        <h4>Jane Smith</h4>
-                        <p>Project Manager, Web Agency</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="blog" class="blog">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Blog</h2>
-                    <p>Insights and articles on software development and tech</p>
-                </div>
-                <div class="blog-posts">
+                <div class="writing-grid">
                     <div class="blog-post">
                         <div class="blog-img">
-                            <img src="images/image.png" alt="Breaking Free from Website Builders Blog" loading="lazy" width="600" height="315">
+                            <img src="images/image.png" alt="Breaking Free from Website Builders blog cover" loading="lazy" width="600" height="315">
                         </div>
                         <div class="blog-content">
                             <h3>Breaking Free from Website Builders: My Journey to Coding My Portfolio</h3>
-                            <p>Learn how I transitioned from website builders to coding my own portfolio, and the valuable lessons learned along the way...</p>
-                            <a href="https://medium.com/@dathaze20/feeling-stuck-with-website-builders-this-is-how-i-broke-free-and-built-my-portfolio-with-code-8f42bd79ce78" class="btn" target="_blank" rel="noopener noreferrer">Read on Medium <i class="fas fa-external-link-alt"></i></a>
+                            <p>How I ditched drag-and-drop site builders and taught myself to code this portfolio from scratch.</p>
+                            <a href="https://medium.com/@dathaze20/feeling-stuck-with-website-builders-this-is-how-i-broke-free-and-built-my-portfolio-with-code-8f42bd79ce78" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Read on Medium <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">
+                        <div class="blog-img"><i class="fas fa-microphone" aria-hidden="true"></i></div>
+                        <div class="blog-content">
+                            <h3>Sam Kinison: The Scream That Broke the Sound Barrier of American Comedy</h3>
+                            <p>A biography of the comedian who turned amplified rage into a new register for stand-up.</p>
+                            <a href="https://medium.com/@dathaze20/sam-kinison-the-scream-that-broke-the-sound-barrier-of-american-comedy-1e1948bdf0d5" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Read on Medium <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">
+                        <div class="blog-img"><i class="fas fa-scale-balanced" aria-hidden="true"></i></div>
+                        <div class="blog-content">
+                            <h3>Julian Assange: The 175-Year Threat and the 2026 Legacy</h3>
+                            <p>A forensic look at WikiLeaks' founder and what intellectual resistance costs.</p>
+                            <a href="https://medium.com/@dathaze20/julian-assange-the-175-year-threat-and-the-2026-legacy-d1379a08bd67" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Read on Medium <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">
+                        <div class="blog-img"><i class="fas fa-scroll" aria-hidden="true"></i></div>
+                        <div class="blog-content">
+                            <h3>The Corpus Hermeticum: The Seventeen Greek Treatises That Launched the Renaissance</h3>
+                            <p>How a set of texts believed to be ancient — and later proven otherwise — reshaped Western thought anyway.</p>
+                            <a href="https://medium.com/@dathaze20/the-corpus-hermeticum-the-seventeen-greek-treatises-that-launched-the-renaissance-triggered-the-54383346da81" class="btn btn-sm btn-outline" target="_blank" rel="noopener noreferrer">Read on Medium <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
+                <p class="writing-note">Most of these were drafted with <a href="#projects">Forge</a>, my own Gemini-powered writing tool — see it in Projects.</p>
             </div>
         </section>
 
-        <section id="contact" class="glassmorphism">
+        <section id="contact">
             <div class="container">
                 <div class="section-title">
                     <h2>Contact Me</h2>
-                    <p>Get in touch for opportunities or inquiries</p>
+                    <p>Open to full-stack, AI-integration, and mobile work</p>
                 </div>
-                <div class="contact-grid">
-                    <div class="contact-form">
-                        <form id="contactForm" action="#" method="post">
-                            <div class="form-group">
-                                <label for="name" class="sr-only">Your Name</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-user"></i>
-                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="sr-only">Your Email</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-envelope"></i>
-                                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject" class="sr-only">Subject</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-pencil-alt"></i>
-                                    <input type="text" id="subject" name="subject" placeholder="Subject">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="message" class="sr-only">Your Message</label>
-                                <div class="input-with-icon textarea-container">
-                                    <i class="fas fa-comment"></i>
-                                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-status" id="formStatus"></div>
-                            <button type="submit" class="btn btn-submit">
-                                <span class="btn-text">Send Message</span>
-                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                            </button>
-                        </form>
-                    </div>
-                    <div class="contact-info">
-                        <h3>Let's Connect</h3>
-                        <p>I'm always open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Email</h4>
-                                    <p><a href="mailto:dathaze20@gmail.com">dathaze20@gmail.com</a></p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Phone</h4>
-                                    <p><a href="tel:+11234567890">(123) 456-7890</a></p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>Location</h4>
-                                    <p>Brooklyn, New York</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="social-links-contact">
-                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        </div>
+                <div class="contact-card glassmorphism">
+                    <h3>Let's build something</h3>
+                    <p>The fastest way to reach me is email — I read everything and reply personally.</p>
+                    <a href="mailto:dathaze20@gmail.com" class="btn">Email Me <i class="fas fa-paper-plane"></i></a>
+                    <div class="contact-links">
+                        <a href="https://github.com/Dathaze20" class="contact-chip" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> github.com/Dathaze20</a>
+                        <a href="https://medium.com/@dathaze20" class="contact-chip" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i> @dathaze20</a>
+                        <span class="contact-chip"><i class="fas fa-location-dot"></i> Brooklyn, NY</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Scroll-to-Top Button -->
-    <button id="scrollToTopBtn" class="scroll-to-top-btn">↑</button>
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Scroll to top">↑</button>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <div class="footer-logo">
-                    <span>AA</span>
-                    <h3>Abel Arroyo</h3>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <span>AA</span>
+                        <h3>Abel Arroyo</h3>
+                    </div>
+                    <p>Full-stack developer shipping AI-integrated web apps and native Android tools — with CI/CD behind every one.</p>
                 </div>
-                <p>Building exceptional web experiences that combine aesthetics with functionality.</p>
+
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#writing">Writing</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>What I Build</h4>
+                        <ul>
+                            <li>AI-Integrated Web Apps</li>
+                            <li>Native Android Tools</li>
+                            <li>Progressive Web Apps</li>
+                            <li>Cross-Platform Python Apps</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:dathaze20@gmail.com">dathaze20@gmail.com</a></li>
+                            <li><i class="fas fa-location-dot"></i> Brooklyn, New York</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+            <div class="footer-bottom">
+                <p>&copy; <span id="footerYear">2026</span> Abel Arroyo. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/Dathaze20" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://medium.com/@dathaze20" aria-label="Medium" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
+                    <a href="mailto:dathaze20@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li>Web Development</li>
-                        <li>UI/UX Design</li>
-                        <li>Mobile App Development</li>
-                        <li>E-commerce Solutions</li>
-                        <li>Database Design</li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul class="footer-contact">
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:dathaze20@gmail.com">dathaze20@gmail.com</a></li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+11234567890">(123) 456-7890</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> Brooklyn, New York</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2025 Abel Arroyo. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/Dathaze20" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://medium.com/@dathaze20" aria-label="Medium" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
             </div>
         </div>
     </footer>
 
-    <script src="scripts.js" async></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // GSAP animations
-            gsap.from('.hero', { duration: 1, opacity: 0, y: -50 });
-            gsap.from('.navbar', { duration: 1, opacity: 0, y: -50, delay: 0.5 });
-            gsap.from('.intro-content', { duration: 1, opacity: 0, x: -50, delay: 1 });
-            gsap.from('.skills-container .skill-item', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 1.5 });
-            gsap.from('.project-card', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 2 });
-            gsap.from('.testimonial-card', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 2.5 });
-            gsap.from('.blog-post', { duration: 1, opacity: 0, y: 50, stagger: 0.2, delay: 3 });
-            gsap.from('.contact-form', { duration: 1, opacity: 0, x: -50, delay: 3.5 });
-            gsap.from('.contact-info', { duration: 1, opacity: 0, x: 50, delay: 3.5 });
-
-            // Lazy load images
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            lazyImages.forEach(img => {
-                img.src = img.dataset.src || img.src;
-            });
-
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Scroll-to-top button
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.style.display = 'block';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
-            });
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            const navToggler = document.querySelector('.nav-toggler');
-            const navLinks = document.querySelector('.nav-links');
-
-            navToggler.addEventListener('click', function() {
-                navToggler.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-        });
-
-        window.addEventListener('load', () => {
-            const pageLoader = document.querySelector('.page-loader');
-            if (pageLoader) {
-                pageLoader.classList.add('fade-out');
-                setTimeout(() => {
-                    pageLoader.style.display = 'none';
-                }, 500); // Match the CSS transition duration
-            }
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
