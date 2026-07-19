@@ -178,6 +178,72 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // Share / QR modal
+        const shareBtn = document.getElementById('shareBtn');
+        const shareModal = document.getElementById('shareModal');
+        const qrContainer = document.getElementById('qrCodeCanvas');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const PORTFOLIO_URL = 'https://dathaze20.github.io/My-Portfolio/';
+        let qrGenerated = false;
+        let lastFocusedEl = null;
+
+        function generateQrCode() {
+            if (qrGenerated || !qrContainer) return;
+            if (typeof QRCode === 'undefined') {
+                qrContainer.textContent = 'QR code unavailable — use the link below.';
+                return;
+            }
+            new QRCode(qrContainer, {
+                text: PORTFOLIO_URL,
+                width: 200,
+                height: 200,
+                colorDark: '#14090a',
+                colorLight: '#f7ecd2',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            qrGenerated = true;
+        }
+
+        function openShareModal() {
+            if (!shareModal) return;
+            lastFocusedEl = document.activeElement;
+            shareModal.hidden = false;
+            document.body.style.overflow = 'hidden';
+            generateQrCode();
+            const closeBtn = shareModal.querySelector('.share-modal-close');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeShareModal() {
+            if (!shareModal) return;
+            shareModal.hidden = true;
+            document.body.style.overflow = '';
+            if (lastFocusedEl) lastFocusedEl.focus();
+        }
+
+        if (shareBtn && shareModal) {
+            shareBtn.addEventListener('click', openShareModal);
+            shareModal.querySelectorAll('[data-close-modal]').forEach(el => {
+                el.addEventListener('click', closeShareModal);
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !shareModal.hidden) closeShareModal();
+            });
+        }
+
+        if (copyLinkBtn) {
+            copyLinkBtn.addEventListener('click', async () => {
+                const originalHTML = copyLinkBtn.innerHTML;
+                try {
+                    await navigator.clipboard.writeText(PORTFOLIO_URL);
+                    copyLinkBtn.innerHTML = 'Copied! <i class="fas fa-check"></i>';
+                } catch (err) {
+                    copyLinkBtn.innerHTML = 'Press Ctrl+C <i class="fas fa-link"></i>';
+                }
+                setTimeout(() => { copyLinkBtn.innerHTML = originalHTML; }, 2000);
+            });
+        }
+
         // Initialize active nav state
         highlightActiveSection();
 
